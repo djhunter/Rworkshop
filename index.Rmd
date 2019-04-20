@@ -4,7 +4,7 @@ author: "David J. Hunter"
 output:
   html_document:
     df_print: paged
-    theme: yeti
+    theme: spacelab
 ---
 
 ```{r setup, include=FALSE}
@@ -15,9 +15,15 @@ This site was originally created for a faculty workshop held at Westmont College
 
 ## Topics
 
-- [Getting started: Variables, Data Frames, and the Console](getting_started.html)
-- [Introductory Statistics in 5 Minutes](intro_stats.html)
+- [Getting started: Variables, Data Frames, and the Console](slides/getting_started.html)
+- [Introductory Statistics in 5 Minutes](slides/intro_stats.html)
+- [Dealing with Data](slides/data.html)
 - more coming ...
+
+## Source Code
+
+All of the pages and slides on this site were authored in RMarkdown. The source code is available on GitHub: https://github.com/djhunter/Rworkshop
+
 
 
 
