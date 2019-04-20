@@ -1,0 +1,23 @@
+---
+title: "Resources for Using R"
+author: "David J. Hunter"
+output:
+  html_document:
+    df_print: paged
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This site was originally created for a faculty workshop held at Westmont College in May of 2019. The purpose of the workshop is to introduce colleagues from a range of disciplines to R, giving them resources for using R in their teaching and research.
+
+## Topics
+
+- [Getting started: Variables, Data Frames, and the Console](getting_started.html)
+- [Introductory Statistics in 5 Minutes](intro_stats.html)
+- more coming ...
+
+
+

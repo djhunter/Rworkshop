@@ -1,0 +1,28 @@
+---
+title: "Getting Started using R"
+date: "May 6, 2019"
+output: 
+  revealjs::revealjs_presentation:
+    fig_width: 14
+    fig_height: 7
+    self_contained: true
+    theme: black
+    highlight: zenburn
+    css: slidesdjh.css
+    center: false
+    transition: slide
+    reveal_options:
+      controls: true
+      progress: false
+      width: 1080
+      height: 600
+---
+
+# Getting Started with R
+
+## Overview
+
+# The Console
+
+# Variables and Data Frames
+
