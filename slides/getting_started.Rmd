@@ -20,9 +20,123 @@ output:
 
 # Getting Started with R
 
+## Why R?
+
+>- Reproducibility
+>- Powerful
+>- Free (as in speech)
+>- Free (as in beer)
+
 ## Overview
 
+>- Commands in the console
+>- Vectors
+>- Data Frames
+>- Workflow
+>     - Scripts
+>     - RMarkdown notebooks
+
+## Workshop materials
+
+Everything is posted at: https://djhunter.github.io/Rworkshop
+
+Slides can be viewed on any web browser. Keyboard shortcuts:
+
+| shortcut | result |
+| --- | --- |
+| o | Toggle Overview mode (see all the slides) |
+| f | Enter fullscreen mode | 
+| ESC | Exit fullscreen mode |
+| space | next slide |
+| arrows | navigate up/down/left/right |
+| ? | See other shortcuts |
+
+The **$\Rightarrow$** symbol indicates something for you to do.
+
+# RStudio Interface
+
+## {data-background="https://info201.github.io/img/r-intro/rstudio-interface.png" data-background-size="contain"}
+
 # The Console
+
+## Use R Interactively 
+
+In the console window, you can type commands and get answers. R understands basic arithmetic.
+
+```{r}
+2+2
+```
+
+**$\Rightarrow$** Try some basic arithmetic commands in the console window. 
+
+## Vectors
+
+- Often you want to deal with several numbers at once.
+- The `c( )` operator *combines* its contents into a *vector*.
+
+```{r}
+c(2,4,6,2,10)
+c(2,4,6,2,10) + c(10, 20, 30, 40, 50)
+c(2,4,6,2,10) * 1000
+```
+
+## Variables
+
+- Often you want to save a vector so you can reuse it.
+- The assignment operator `<-` saves a variable.
+
+```{r}
+joe <- c(2,4,6,2,10)
+joe^2
+sum(joe)
+mean(joe)
+```
+
+## Practice with variables
+
+**$\Rightarrow$** Use the console to compute 
+$$\frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2} +\frac{1}{6^2} +\frac{1}{7^2} +\frac{1}{8^2} +\frac{1}{9^2}  + \frac{1}{10^2}.$$ 
+Start by assigning `c(2,3,4,5,6,7,8,9,10)` to a variable with a name you make up.
+
+# Workflow
+
+## Saving your work
+
+Two ways to save your work:
+
+>- R Scripts (`foo.R` files)
+>     - Simple, universal
+>- RMarkdown documents (`foo.Rmd` files)
+>     - Combinations of scripts and other text
+>     - Can be exported (HTML, slides, PDF, etc)
+>- Workflow 
+>     - Experiment in console
+>     - Save what worked as R Scripts or RMarkdown documents
+
+## {data-background="https://info201.github.io/img/r-intro/rstudio-interface.png" data-background-size="contain"}
+
+## Make an R Script
+
+**$\Rightarrow$** Follow the steps below to save your work from the last exercise.
+
+1. Click on the *History* tab in the upper-right pane. Locate the lines of code that successfully computed the sum $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{10^2}$. 
+2. In the *File* menu, choose *New File > R Script*.
+3. Click on the lines you located in #1, and click the *$\Leftarrow$ To Source* button. 
+4. Save your script to a file with a location and name you will remember. The file name should end in `.R`.
+5. Test your script by clicking the *$\Rightarrow$  Source* button in the upper-left pane. The contents should execute in the console.
+
+## Update your script
+
+You can define a sequence of numbers using the `:` operator.
+
+```{r}
+2:10
+```
+
+**$\Rightarrow$** Update your script so it computes $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}$. (Compare the answer to $\pi^2/6-1$.)
+
+## Make an RMarkdown Document
+
 
 # Variables and Data Frames
 
