@@ -18,7 +18,7 @@ output:
       height: 600
 ---
 
-# Getting Started with R
+# *Getting Started with R* {data-background="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" data-background-size="contain"}
 
 ## Why R?
 
@@ -53,11 +53,11 @@ Slides can be viewed on any web browser. Keyboard shortcuts:
 
 The **$\Rightarrow$** symbol indicates something for you to do.
 
-# RStudio Interface
+# *RStudio Interface* {data-background="https://d33wubrfki0l68.cloudfront.net/acfa849636e78c5bfa9637ddf6c0cee58a4e49e0/d198a/images/2017-08-30-rstudio-dark-theme-plots.png"}
 
 ## {data-background="https://info201.github.io/img/r-intro/rstudio-interface.png" data-background-size="contain"}
 
-# The Console
+# *The Console* {data-background="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Digital_rain_animation_medium_letters_shine.gif/220px-Digital_rain_animation_medium_letters_shine.gif"}
 
 ## Use R Interactively 
 
@@ -98,7 +98,7 @@ mean(joe)
 $$\frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2} +\frac{1}{6^2} +\frac{1}{7^2} +\frac{1}{8^2} +\frac{1}{9^2}  + \frac{1}{10^2}.$$ 
 Start by assigning `c(2,3,4,5,6,7,8,9,10)` to a variable with a name you make up.
 
-# Workflow
+# *Workflow* {data-background="https://i.giphy.com/media/iOF7iSG4CBC92/200w.webp" data-background-size="contain"}
 
 ## Saving your work
 
@@ -135,8 +135,110 @@ You can define a sequence of numbers using the `:` operator.
 
 **$\Rightarrow$** Update your script so it computes $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}$. (Compare the answer to $\pi^2/6-1$.)
 
-## Make an RMarkdown Document
+## RMarkdown Documents
+
+RMarkdown Documents allow for 
+
+- text next to code (notes, etc)
+- various output formats (e.g., these slides)
+
+## **$\Rightarrow$** Make an RMarkdown Document
+
+1. In the *File* menu, choose *New File > RMarkdown...*.
+2. In the "New R Markdown" dialog box, give the document a title. Keep the other default settings (Document, HTML).
+3. Clicking OK will open a new RMarkdown document with some boilerplate code. *Delete* everything below line 7. 
+4. *Save* the file to a location and name you will remember. The file name should end in `.Rmd`.
+
+## **$\Rightarrow$** Add a code chunk, text, and Knit
+
+5. Click on the *$^+C$ Insert* button, and choose *R* from the drop down menu. Inside the code chunk that appears, enter your code from the script you wrote. You can execute this code using the *$\rhd$* button in the corner of the chunk.
+6. Add some text above and below the code chunk. These can be notes to yourself explaining what you just did. 
+7. Try clicking the *Knit* button. If it asks you to install some packages, say "yes".
+
+## What happens when you knit?
+
+- Your RMarkdown file gets saved.
+- Every code chunk gets executed in a *new* environment.
+- An output file gets "knitted" together.
+- The output file gets displayed.
+
+# *Variables and Data Frames* {data-background="https://cdn-images-1.medium.com/fit/t/1600/480/0*Uw37vrrKzeEWahdB" data-background-size="contain"}
+
+## Data Frames in R
+
+- The basic form of data. Think spreadsheet.
+- Columns have the same length, but can be different types.
+- One row per observational unit.
+
+## Built-in data sets: `iris`
+
+```{r}
+data("iris")
+iris
+```
+
+## Quick summary
+
+```{r}
+summary(iris)
+```
+
+## Columns are vectors
+
+Use the `$` operator to return the columns of a data frame.
+
+```{r}
+iris$Sepal.Length
+```
+
+## Columns are vectors
+
+Use the `$` operator to return the columns of a data frame.
+
+```{r}
+iris$Species
+```
+
+## Quick box plots
+
+```{r, fig.align='center', fig.width=8, fig.height=4.2}
+boxplot(iris)
+```
+
+## Selecting rows and columns
+
+```{r}
+iris[1:6,1:4]
+```
+
+## Selecting rows
+
+```{r}
+iris[1:6,]
+```
+
+## Selecting columns
+
+```{r}
+iris[,1:4]
+```
+
+## Selecting noncontiguous columns
+
+```{r}
+iris[,c(2,4)]
+```
+
+## Quick Scatterplot
+
+```{r, fig.align='center', fig.width=7, fig.height=4.2}
+plot(iris[,c(2,4)])
+```
 
 
-# Variables and Data Frames
+# *Explore Some data* {data-background="https://i.giphy.com/media/l2R0e9y6A304JkFOg/giphy.webp" data-background-size="contain"}
+
+## **$\Rightarrow$** Write a report
+
+**$\Rightarrow$** Load the `mtcars` data set. Type `?mtcars` in the console to see a description of this data set. Create a new RMarkdown file in which you calculate a `summary` of this data, and `plot` a scatterplot of two of the variables. Include in your RMarkdown file a description of what the scatter plot tells you. When your report is finished, *Knit* it to HTML. Then copy and paste the HTML output into an email and send it to yourself.
 

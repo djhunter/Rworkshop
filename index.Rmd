@@ -3,6 +3,10 @@ title: "Resources for Using R"
 author: "David J. Hunter"
 output:
   html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
     df_print: paged
     theme: spacelab
 ---
@@ -12,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 This site was originally created for a faculty workshop held at Westmont College in May of 2019. The purpose of the workshop is to introduce colleagues from a range of disciplines to R, giving them resources for using R in their teaching and research.
+
+# Workshop Resources 
 
 ## Slides (under construction)
 
@@ -34,14 +40,13 @@ This site was originally created for a faculty workshop held at Westmont College
     + **First,** [download and install R](https://cran.rstudio.com/).
     + **Second,** [download and install RStudio](https://www.rstudio.com/products/rstudio/download/).
     
-## Other Resources
+# Other Resources
 
 * The [CRAN Task Views page](https://cran.rstudio.com/web/views/) is a good place to discover hundreds (thousands?) of popular R packages, organized by discipline, available from the [Comprehensive R Archive Network](https://cran.rstudio.com/).
 * [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf), by Patrick Burns, is a helpful guide for programmers who want to understand how R is different from other programming languages.
 * [Most upvoted Stack Overflow R questions](https://stackoverflow.com/questions/tagged/r)
 
-
-## Source Code
+# Source Code
 
 All of the pages and slides on this site were authored in RMarkdown. The source code is available on GitHub: https://github.com/djhunter/Rworkshop
 
