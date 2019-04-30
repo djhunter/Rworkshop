@@ -1,0 +1,324 @@
+---
+title: "Introductory Statistics in 5 Minutes"
+date: "May 6, 2019"
+output: 
+  revealjs::revealjs_presentation:
+    fig_width: 14
+    fig_height: 7
+    self_contained: true
+    theme: black
+    highlight: zenburn
+    css: slidesdjh.css
+    center: false
+    transition: slide
+    reveal_options:
+      controls: true
+      progress: false
+      width: 1080
+      height: 600
+---
+
+# *MA-5 in 5 Minutes* {data-background="http://pfeifferpartners.com/wp-content/uploads/2016/03/pfeiffer-westmont-int-winter-main-lobby-stair-M.jpg" data-background-size="contain"}
+
+## Basic Statistical Tests in R
+
+>- Once the data is loaded, most tests are one line of code.
+>- Simple graphs are also one-liners (base graphics).
+
+## MA-5 Topics I cover
+
+- One proportion and one mean
+- Two proportions and two means (independent samples and paired)
+- Multiple proportions ($\chi^2$)
+- Multiple means (ANOVA)
+- Regression and Correlation
+- Multiple linear regression
+- MANOVA, Factorial ANOVA, Logistic Regression (optional)
+
+>- *Nonparametric Resampling Techniques for all of the above*
+
+## Introduction to Statistical Investigations
+
+- Data and Simulation-Based Applets: http://www.isi-stats.com/isi/applets.html
+- Slides from last semester: http://math.westmont.edu/ma5
+
+# *Keep track of notes in RMarkdown* {data-background="https://i2.wp.com/mimshouse.com/wp-content/uploads/16213476783_e5bb974e16_k.jpg" data-background-size="contain"}
+
+## **$\Rightarrow$** Make an RMarkdown Document
+
+Let's keep track of our work in this lesson using RMarkdown.
+
+1. In the *File* menu, choose *New File > RMarkdown...*.
+2. In the "New R Markdown" dialog box, give the document a title. Keep the other default settings (Document, HTML).
+3. Clicking OK will open a new RMarkdown document with some boilerplate code. *Delete* everything below line 7. 
+4. *Save* the file to a location and name you will remember. The file name should end in `.Rmd`. (e.g., `introstats.Rmd`)
+
+# *One Sample Tests* {data-background="https://cdn.cnn.com/cnnnext/dam/assets/151119194429-04-cancer-dogs-super-169.jpg" data-background-size="contain"}
+
+## One-Proportion Test
+
+$$
+H_0: \pi = 0.5 \\ 
+H_a: \pi \neq 0.5 \\ 
+\hat{p} = 54/83, \quad n=83
+$$
+
+```{r, eval=FALSE}
+prop.test(54, 83, p = 0.5)
+```
+
+## One-Proportion Test
+
+```{r}
+prop.test(54, 83, p = 0.5)
+```
+
+## **$\Rightarrow$** Explore the help menus
+
+1. In the console, type `?prop.test`. Read the help menu that appears.
+
+2. Test $H_0: \pi = 0.5$ versus $H_a: \pi > 0.5$ (*one-sided* alternative) for $\hat{p} = 54/83$, $n=83$, *without* the continuity correction.
+
+3. Read about the exact binomial test: `?binom.test`.
+
+4. Repeat the test in #2 using the exact binomial test.
+
+## **$\Rightarrow$** Save your work
+
+5. Above the editor pane for your RMarkdown document, click on the *$^+C$ Insert* button, and choose *R* from the drop down menu. Inside the code chunk that appears, enter the code that workd for steps 1-4. 
+6. Add some text above or below the code chunk explaining what these commands do. 
+7. *Knit* and view the HTML output.
+
+## One-Sample $t$-test
+
+sleep 
+```{r}
+sleep <- read.table("http://math.westmont.edu/ma5/classSleep.txt", header = TRUE)
+sleep
+```
+
+## One-Sample $t$-test
+
+$$
+H_0: \mu = 0 \\
+H_a: \mu \neq 0
+$$
+
+```{r, eval=FALSE}
+t.test(sleep)
+```
+
+## One-Sample $t$-test
+
+```{r}
+t.test(sleep)
+```
+
+## **$\Rightarrow$** Customize the $t$-test
+
+1. Load the data using the following command. (Copy and paste it into the console.)
+
+```{r, eval=FALSE}
+sleep <- read.table("http://math.westmont.edu/ma5/classSleep.txt", header = TRUE)
+```
+
+2. See the help page using `?t.test` in the console. 
+
+3. Change the *alternative* hypothesis to $H_a : \mu < 8$ and generate a p-value. Also, generate a *99%* confidence interval.
+
+4. Save your code and make some notes about it in your RMarkdown document.
+
+# *Explanatory/Response Scenarios* {data-background="https://pages.wustl.edu/files/pages/olsen/site/slideshow/img3260.jpg" data-background-size="contain"}
+
+## Explanatory/Response variables
+
+| Explanatory | Response | Scenario/Test |
+| ---- | ---- | ---- |
+| Categorical (2 levels) | Categorical | two-proportion $z$-test |
+| Categorical (2 levels, independent) | Quantitative | two-sample $t$-test |
+| Categorical (2 levels, paired) | Quantitative | paired $t$-test |
+| Categorical (>2 levels) | Categorical | $\chi^2$ test |
+| Categorical (>2 levels) | Quantitative | ANOVA $F$-test |
+| Quantitative | Quantitative | Regression/Correlation |
+
+## Two Proportion $z$-test
+
+```{r}
+gilbert <- read.table("http://www.isi-stats.com/isi/data/chap5/Gilbert.txt", header = TRUE)
+head(gilbert) # just show the first few lines
+```
+
+## Two Proportion $z$-test
+
+```{r}
+table(gilbert)
+```
+
+## Two Proportion $z$-test
+
+There were 34 deaths on the 1384 shifts when Gilbert didn't work, and 40 deaths on the 257 shifts when she did work.
+
+$$
+H_0: \pi_1 - \pi_2 = 0 \\
+H_a: \pi_1 - \pi_2 \neq 0 
+$$
+
+```{r, eval=FALSE}
+prop.test(c(34, 40), c(1384, 257))
+```
+
+## Two Proportion $z$-test
+
+There were 34 deaths on the 1384 shifts when Gilbert didn't work, and 40 deaths on the 257 shifts when she did work.
+
+```{r}
+prop.test(c(34, 40), c(1384, 257))
+```
+
+## Two Proportion $z$-test
+
+Instead of giving the counts, you can just send `prop.test` the table:
+
+```{r}
+prop.test(table(gilbert))
+```
+
+# *Scenarios using formulas* {data-background="https://www.open.edu/openlearn/ocw/pluginfile.php/775971/mod_resource/content/0/mu120_4m6_cover_image_1.jpg"}
+
+## Formulas in R
+
+- Explanatory (x) and response (y) variables are usually denoted using "tilde" notation: `y ~ x`
+- Works in different contexts (tests, plots)
+- Can also have multiple response, explanatory variables
+
+## Formulas in plots
+
+```{r, fig.align='center', fig.height=4, fig.width=4}
+plot(Patient ~ GilbertWorked., data = gilbert)
+```
+
+## Two-sample $t$-test
+
+```{r}
+friends <- read.table("http://www.isi-stats.com/isi/data/chap6/CloseFriends.txt", header = TRUE)
+summary(friends)
+```
+
+## Two-sample $t$-test
+
+```{r, fig.align='center', fig.height=4, fig.width=4}
+plot(Friends ~ Sex, data = friends)
+```
+
+## Two-sample $t$-test
+
+$$
+H_0: \mu_1 - \mu_2 = 0 \\
+H_a: \mu_1 - \mu_2 \neq 0 
+$$
+
+```{r, eval=FALSE}
+t.test(Friends ~ Sex, data = friends)
+```
+
+## Two-sample $t$-test
+
+```{r}
+t.test(Friends ~ Sex, data = friends)
+```
+
+## Paired $t$-test
+
+```{r}
+rounding1st <- read.table("http://www.isi-stats.com/isi/data/chap7/FirstBase.txt", header=TRUE)
+summary(rounding1st)
+```
+
+## Paired $t$-test
+
+$$
+H_0: \mu_d  = 0 \\
+H_a: \mu_d  \neq 0 
+$$
+
+```{r, eval = FALSE}
+t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
+```
+
+## Paired $t$-test
+
+```{r}
+t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
+```
+
+## Chi-square test
+
+```{r}
+apunc <- read.table("http://www.isi-stats.com/isi/data/chap8/Acupuncture.txt", header = TRUE)
+table(apunc)
+head(apunc)
+```
+
+## Chi-square test
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+plot(Improvement ~ Acupunture, data = apunc)
+```
+
+## Chi-square test
+
+```{r}
+chisq.test(table(apunc))
+```
+
+## One-way ANOVA
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+diets <- read.table("http://www.isi-stats.com/isi/data/chap9/Diets.txt", header = TRUE)
+plot(BMI ~ Diet, data = diets)
+```
+
+## One-way ANOVA
+
+```{r}
+d.aov <- aov(BMI ~ Diet, data = diets)
+anova(d.aov)
+```
+
+## Tukey HSD follow-up
+
+```{r}
+TukeyHSD(d.aov)
+```
+
+## Regression/Corellation
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+textbooks <- read.table("http://www.isi-stats.com/isi/data/chap10/TextbookPrices.txt", header = TRUE)
+plot(Price ~ Pages, data = textbooks)
+```
+
+## Regression/Corellation
+
+```{r}
+summary(lm(Price ~ Pages, data = textbooks))
+```
+
+## Correlation Matrix
+
+```{r}
+cor(textbooks)
+```
+
+# *Resources for other scenarios* {data-background="https://imgs.xkcd.com/comics/correlation.png" data-background-size="contain"}
+
+## UCLA Test Chooser
+
+https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
+
+## Breakfast Cereal
+
+
+
+
+

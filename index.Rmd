@@ -19,19 +19,25 @@ This site was originally created for a faculty workshop held at Westmont College
 
 # Workshop Resources 
 
-## Slides (under construction)
+## [Getting started: Variables, Data Frames, and Workflow](slides/getting_started.html) 
 
-* [Getting started: Variables, Data Frames, and Workflow](slides/getting_started.html)
-    + This lesson starts with the basics of executing commands in the console and introduces the fundamental ways that R stores data. We will also see how to use R scripts and RMarkdown documents to encourage habits of *reproducibility* in your teaching and research. 
-* [Introductory Statistics in 5 Minutes](slides/intro_stats.html)
-    + Once you are comfortable with data frames in R and the RStudio interface, most basic statistical tests can be run in a single line of code. We will see how to perform one- and two-sample $t$-tests, paired $t$-tests, $\chi^2$-tests, one-way and factorial ANOVA (including post-hoc tests), correlation and regression, multiple regression, MANOVA, logistic regression, and more. 
-* [Dealing with Data and Packages](slides/data_pack.html)
-    + Unleash the power of using *packages* to extend R's capabilities. We will focus on using the [tidyverse](https://www.tidyverse.org/) to import data and shape it in a reproducible way.
-* [Graphics](slides/graphics.html)
-    + Get started using the [ggplot2](https://ggplot2.tidyverse.org/) library to create publication-ready graphics quickly and easily.
-* [Functions, Vectorization, Replication](slides/functions.html) 
-    + Streamline your projects by writing your own functions, and apply them over a range of data using *vectorization* instead of iteration.
-* More TBA ...
+This lesson starts with the basics of executing commands in the console and introduces the fundamental ways that R stores data. We will also see how to use R scripts and RMarkdown documents to encourage habits of *reproducibility* in your teaching and research. 
+
+## [Introductory Statistics in 5 Minutes](slides/intro_stats.html) 
+
+Once you are comfortable with data frames in R and the RStudio interface, most basic statistical tests can be run in a single line of code. We will see how to perform one- and two-sample $t$-tests, paired $t$-tests, $\chi^2$-tests, one-way and factorial ANOVA (including post-hoc tests), correlation and regression, multiple regression, MANOVA, logistic regression, and more. 
+
+## [Dealing with Data and Packages](slides/data_pack.html) 
+
+Unleash the power of using *packages* to extend R's capabilities. We will focus on using the [tidyverse](https://www.tidyverse.org/) to import data and shape it in a reproducible way.
+
+## [Graphics](slides/graphics.html) 
+
+Get started using the [ggplot2](https://ggplot2.tidyverse.org/) library to create publication-ready graphics quickly and easily.
+
+## [Functions, Vectorization, Replication](slides/functions.html)
+
+Streamline your projects by writing your own functions, and apply them over a range of data using *vectorization* instead of iteration.
 
 ## Workshop Prerequisites
 
@@ -49,7 +55,4 @@ This site was originally created for a faculty workshop held at Westmont College
 # Source Code
 
 All of the pages and slides on this site were authored in RMarkdown. The source code is available on GitHub: https://github.com/djhunter/Rworkshop
-
-
-
 

@@ -7,7 +7,7 @@ output:
     fig_height: 7
     self_contained: true
     theme: black
-    highlight: zenburn
+    highlight: monochrome
     css: slidesdjh.css
     center: false
     transition: slide
