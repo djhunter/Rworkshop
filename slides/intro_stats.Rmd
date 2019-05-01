@@ -316,7 +316,67 @@ cor(textbooks)
 
 https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
 
-## Breakfast Cereal
+## **$\Rightarrow$** Breakfast Cereal
+
+**$\Rightarrow$** Do the following in the console, and transfer to your RMarkdown document, or work directly from the RMarkdown document.
+
+1. Load the breakfast cereal data:
+
+```{r}
+cereal <- read.table("http://math.westmont.edu/data/cereal.csv", header=TRUE, sep=";")
+```
+
+2. This data set is quite large, so view it by clicking on the *Environment* tab in the upper-right pane, and click on the `cereal` name to see the data as a spreadsheet.
+
+3. Produce a [correlation matrix](#/correlation-matrix) using [columns](getting_started.html#/selecting-noncontiguous-columns) 7, 8, 9, 10, and 16.
+
+## **$\Rightarrow$** Regression
+
+4. Make a [scatterplot](#/regressioncorellation) of `rating` versus `sugar`.
+
+5. Produce a [regression table](#/regressioncorellation-1) for `rating` as explained by `sugar`.
+
+6. Produce a regression table for `rating` as explained by `fiber`.
+
+7. Produce a regression table for `rating` as explained by `sugar + fiber`. (That's multiple regression.)
+
+## **$\Rightarrow$** ANOVA
+
+8. We'd like to treat `shelf` as a categorical variable (factor). Do so:
+
+```{r}
+cereal$shelf <- factor(cereal$shelf) # make R treat shelf as categorical
+```
+
+9. Produce an [ANOVA table](#/one-way-anova-1) for `sugar` as explained by `shelf`. Do a [post-hoc test](#/tukey-hsd-follow-up), too.
+
+10. Produce an ANOVA table for `sugar` as explained by `shelf * mfr`. (That's factorial ANOVA.) Do a post-hoc test, too. 
+
+**$\Rightarrow$** If you have been working from the console, save all your code into your RMarkdown document.
+
+# *Tricked-out RMarkdown* {data-background="https://i.pinimg.com/originals/94/53/62/945362d91788247548930f28520b9a03.gif" data-background-size="contain"}
+
+## RMarkdown formatting
+
+RMarkdown supports lots of formatting options. See:
+https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements
+
+**$\Rightarrow$** Experiment with adding some formattting to your RMarkdown document. Consider adding:
+
+- Headers of different levels
+- A bulleted list
+- A blockquote
+
+You will have to *Knit* to see what worked.
+
+## Tricked-out HTML
+
+There are lots of HTML options. See: https://bookdown.org/yihui/rmarkdown/html-document.html
+
+**$\Rightarrow$** Experiment with some HTML optons. Try:
+
+- Adding a table of contents.
+- A different document theme.
 
 
 

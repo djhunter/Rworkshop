@@ -952,8 +952,55 @@ H_a: \mu_d  \neq 0
 <section><section id="resources-for-other-scenarios" class="titleslide slide level1" data-background="https://imgs.xkcd.com/comics/correlation.png" data-background-size="contain"><h1><em>Resources for other scenarios</em></h1></section><section id="ucla-test-chooser" class="slide level2">
 <h2>UCLA Test Chooser</h2>
 <p><a href="https://stats.idre.ucla.edu/other/mult-pkg/whatstat/" class="uri">https://stats.idre.ucla.edu/other/mult-pkg/whatstat/</a></p>
-</section><section id="breakfast-cereal" class="slide level2">
-<h2>Breakfast Cereal</h2>
+</section><section id="rightarrow-breakfast-cereal" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Breakfast Cereal</h2>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Do the following in the console, and transfer to your RMarkdown document, or work directly from the RMarkdown document.</p>
+<ol type="1">
+<li>Load the breakfast cereal data:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cereal &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;http://math.westmont.edu/data/cereal.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</code></pre></div>
+<ol start="2" type="1">
+<li><p>This data set is quite large, so view it by clicking on the <em>Environment</em> tab in the upper-right pane, and click on the <code>cereal</code> name to see the data as a spreadsheet.</p></li>
+<li><p>Produce a <a href="#//correlation-matrix">correlation matrix</a> using <a href="getting_started.html#/selecting-noncontiguous-columns">columns</a> 7, 8, 9, 10, and 16.</p></li>
+</ol>
+</section><section id="rightarrow-regression" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Regression</h2>
+<ol start="4" type="1">
+<li><p>Make a <a href="#//regressioncorellation">scatterplot</a> of <code>rating</code> versus <code>sugar</code>.</p></li>
+<li><p>Produce a <a href="#//regressioncorellation-1">regression table</a> for <code>rating</code> as explained by <code>sugar</code>.</p></li>
+<li><p>Produce a regression table for <code>rating</code> as explained by <code>fiber</code>.</p></li>
+<li><p>Produce a regression table for <code>rating</code> as explained by <code>sugar + fiber</code>. (That’s multiple regression.)</p></li>
+</ol>
+</section><section id="rightarrow-anova" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> ANOVA</h2>
+<ol start="8" type="1">
+<li>We’d like to treat <code>shelf</code> as a categorical variable (factor). Do so:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cereal<span class="op">$</span>shelf &lt;-<span class="st"> </span><span class="kw">factor</span>(cereal<span class="op">$</span>shelf) <span class="co"># make R treat shelf as categorical</span></code></pre></div>
+<ol start="9" type="1">
+<li><p>Produce an <a href="#//one-way-anova-1">ANOVA table</a> for <code>sugar</code> as explained by <code>shelf</code>. Do a <a href="#//tukey-hsd-follow-up">post-hoc test</a>, too.</p></li>
+<li><p>Produce an ANOVA table for <code>sugar</code> as explained by <code>shelf * mfr</code>. (That’s factorial ANOVA.) Do a post-hoc test, too.</p></li>
+</ol>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> If you have been working from the console, save all your code into your RMarkdown document.</p>
+</section></section>
+<section><section id="tricked-out-rmarkdown" class="titleslide slide level1" data-background="https://i.pinimg.com/originals/94/53/62/945362d91788247548930f28520b9a03.gif" data-background-size="contain"><h1><em>Tricked-out RMarkdown</em></h1></section><section id="rmarkdown-formatting" class="slide level2">
+<h2>RMarkdown formatting</h2>
+<p>RMarkdown supports lots of formatting options. See: <a href="https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements" class="uri">https://bookdown.org/yihui/rmarkdown/markdown-syntax.html#block-level-elements</a></p>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Experiment with adding some formattting to your RMarkdown document. Consider adding:</p>
+<ul>
+<li>Headers of different levels</li>
+<li>A bulleted list</li>
+<li>A blockquote</li>
+</ul>
+<p>You will have to <em>Knit</em> to see what worked.</p>
+</section><section id="tricked-out-html" class="slide level2">
+<h2>Tricked-out HTML</h2>
+<p>There are lots of HTML options. See: <a href="https://bookdown.org/yihui/rmarkdown/html-document.html" class="uri">https://bookdown.org/yihui/rmarkdown/html-document.html</a></p>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Experiment with some HTML optons. Try:</p>
+<ul>
+<li>Adding a table of contents.</li>
+<li>A different document theme.</li>
+</ul>
 </section></section>
     </div>
   </div>
