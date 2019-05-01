@@ -1,0 +1,77 @@
+---
+title: "Dealing with Data and Packages"
+date: "May 7, 2019"
+output: 
+  revealjs::revealjs_presentation:
+    fig_width: 14
+    fig_height: 7
+    self_contained: true
+    theme: black
+    highlight: zenburn
+    css: slidesdjh.css
+    center: false
+    transition: slide
+    reveal_options:
+      controls: true
+      progress: false
+      width: 1080
+      height: 600
+---
+
+# Extending R with packages {data-background="https://pbs.twimg.com/media/CvzEQcfWIAAIs-N.jpg" data-background-size="contain"}
+
+## Packages in R
+
+>- So far, we have been using "base" R.
+>- One of the most compelling reasons to use R is the enormous ecosystem of packages that extend its capabilities.
+>- [CRAN task view](https://cran.rstudio.com/web/views/)
+
+## Install the Tidyverse
+
+We will be using a suite of packages designed for data science.
+
+**$\Rightarrow$** Install the `tidyverse` by executing the following command in the console:
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+This installation may take a few moments.
+
+# *Getting Data into R* {data-background="https://tr2.cbsistatic.com/hub/i/2016/05/27/b6dd6d05-84b0-4eeb-ad7f-ddea46d0f15c/unexpected-error.jpg" data-background-size="contain"}
+
+## Reproducibilty principles
+
+>- We want other people to be able to look at our data and reproduce our statistical analyses.
+>- We should make our data public.
+>- We should make our code public.
+>- Importing data into a statistical package often involves choices. These choices should be reproducible.
+>- Therefore, **our code should import our data.** Avoid using menus or mouse clicks to import data.
+
+## Importing Data from a website
+
+- In the [last lesson](intro_stats.html), we read most of our data sets off of websites.
+- This is fairly reproducible. (It would be better if the code and data were in the same place.)
+- For many R commands, `file` can be a path to a local file, or a URL.
+
+## **$\Rightarrow$** Make a new project
+
+To work with local data, it helps to use *Projects*.
+
+1. In the *File* menu, choose *New Project...*. In the dialog that appears, select *New Directory* followed by  *New Project*.
+
+2. For the *Directory Name*, use `DataWorkshop`. Click on *Browse* and find a subdirectory where you want this new directory to reside (e.g., Documents, Dropbox, etc.). You will need to be able to find this directory later.
+
+3. Click on *Create Project*. A new empty project should load. Take a look at the *Files* tab in the lower right pane.
+
+## **$\Rightarrow$** Make a new RMarkdown document
+
+## Importing Data from a local file
+
+- Quite often, we have data in a local file we want to use.
+- We should put our data where our code is: the project folder.
+
+## **$\Rightarrow$** Download some data
+
+1. Download the Excel file [flights.xlsx](http://math.westmont.edu/data/flights.xlsx) to your computer. **Make sure it ends up in the project folder `DataWorkshop` that you just created.** Depending on your browser settings, it may end up in your `Downloads` folder, and you will have to move it to the `DataWorkshop` folder. 
+2. Refresh the view in the *Files* pane of your project, and make sure that the `flights.xlsx` file is there.

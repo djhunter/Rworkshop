@@ -25,7 +25,7 @@ This lesson starts with the basics of executing commands in the console and intr
 
 ## [Introductory Statistics in 5 Minutes](slides/intro_stats.html) 
 
-Once you are comfortable with data frames in R and the RStudio interface, most basic statistical tests can be run in a single line of code. We will see how to perform one- and two-sample $t$-tests, paired $t$-tests, $\chi^2$-tests, one-way and factorial ANOVA (including post-hoc tests), correlation and regression, multiple regression, MANOVA, logistic regression, and more. 
+Once you are comfortable with data frames in R and the RStudio interface, most basic statistical tests can be run in a single line of code. We will see how to perform one- and two-sample $t$-tests, paired $t$-tests, $\chi^2$-tests, one-way and factorial ANOVA (including post-hoc tests), correlation and regression, multiple regression, and more. 
 
 ## [Dealing with Data and Packages](slides/data_pack.html) 
 
@@ -51,6 +51,8 @@ Streamline your projects by writing your own functions, and apply them over a ra
 * The [CRAN Task Views page](https://cran.rstudio.com/web/views/) is a good place to discover hundreds (thousands?) of popular R packages, organized by discipline, available from the [Comprehensive R Archive Network](https://cran.rstudio.com/).
 * [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf), by Patrick Burns, is a helpful guide for programmers who want to understand how R is different from other programming languages.
 * [Most upvoted Stack Overflow R questions](https://stackoverflow.com/questions/tagged/r)
+* [Choosing the right statistical test](https://stats.idre.ucla.edu/other/mult-pkg/whatstat/), with code samples in R, SPSS, SAS, and Stata. 
+* [R For Data Science](https://r4ds.had.co.nz/), by Hadley Wickham and Garrett Grolemund.
 
 # Source Code
 
