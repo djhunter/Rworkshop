@@ -1,0 +1,88 @@
+---
+title: "Graphics"
+date: "May 7, 2019"
+output: 
+  revealjs::revealjs_presentation:
+    fig_width: 14
+    fig_height: 7
+    self_contained: true
+    theme: black
+    highlight: zenburn
+    css: slidesdjh.css
+    center: false
+    transition: slide
+    reveal_options:
+      controls: true
+      progress: false
+      width: 1080
+      height: 600
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    df_print: paged
+    theme: spacelab
+---
+
+# *Better Graphics with ggplot* {data-background="http://4.bp.blogspot.com/-s-Qbt193kz4/UX8GoEuZo4I/AAAAAAAAGXI/ZTDOEYyq4ak/s1600/DSC04879.JPG" data-background-size="contain"}
+
+## Grammar of Graphics
+
+>- So far we have been using the "base" graphics of R. 
+>- Base graphics can look good, but it takes some work.
+>- In this lesson, we'll explore the `ggplot2` package, which is part of the tidyverse.
+>- `ggplot2` graphics look better "out of the box", and the syntax follows the tidyverse philosopy.
+
+## **$\Rightarrow$** Make a new RMarkdown document
+
+1. Make sure your are in your `DataWorkshop` project. If not, switch to it.
+2. In the *File* menu, choose *New File > RMarkdown...* and title a new document.
+3. Clicking OK will open a new RMarkdown document with some boilerplate code. *Delete* everything below line 7. 
+4. *Save* the document as `tidyplots.Rmd` in the project directory `DataWorkshop`. After you save the file, it should appear in the *Files* tab, along with the file `DataWorkshop.Rproj`.
+
+## **$\Rightarrow$** Load the tidyverse
+
+```{r}
+library(tidyverse)
+```
+
+## **$\Rightarrow$**  look at `mpg` tibble
+
+The `tidyverse` comes with a built-in tibble called `mpg`. To make it appear in the upper-right pane, type `View(mpg)` in the console. You can also just echo the name:
+
+```{r}
+mpg
+```
+
+## **$\Rightarrow$** Review Exercise
+
+Use the tidyverse data transformations to create a list of all the auto manufacturers, along with the average city mpg of their vehicles, sorted from most fuel-efficient to least.
+
+# using GGplot
+
+## Data Visualization
+
+Most of this lesson is adapted from [Chapter 3](https://r4ds.had.co.nz/data-visualisation.html) of *R for Data Science*.
+
+## ggplot grammar
+
+- `ggplot()` creates a blank graph.
+- `ggplot(mpg)` associates the `mpg` data.
+- `ggplot(mpg) + geom_point()` adds a scatterplot to the graph, but we need to specify what variables to use.
+-  `aes()` specifies which variables are represented by different properties of the graph (aesthetics).
+- There are lots of different `geom`'s. You can add layers to the plot with `+`'s.
+
+## ggplot scatterplot
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(mpg) + geom_point(aes(x=displ, y=hwy))
+```
+
+## Coloring factors
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(mpg) + geom_point(aes(x=displ, y=hwy, color = class))
+```
+
+

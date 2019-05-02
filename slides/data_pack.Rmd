@@ -2,13 +2,6 @@
 title: "Dealing with Data and Packages"
 date: "May 7, 2019"
 output: 
-  html_document:
-    toc: true
-    toc_float:
-      collapsed: false
-      smooth_scroll: true
-    df_print: paged
-    theme: spacelab
   revealjs::revealjs_presentation:
     fig_width: 14
     fig_height: 7
@@ -23,6 +16,13 @@ output:
       progress: false
       width: 1080
       height: 600
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    df_print: paged
+    theme: spacelab
 ---
 
 # Extending R with packages {data-background="https://pbs.twimg.com/media/CvzEQcfWIAAIs-N.jpg" data-background-size="contain"}
@@ -300,7 +300,51 @@ flights %>%
 
 ## Grouped summaries
 
+```{r}
+flights %>%
+  group_by(origin) %>%
+  summarize(mean_dist = mean(distance))
+```
 
+## Grouped summaries with group sizes
+
+```{r}
+flights %>%
+  group_by(dest) %>%
+  summarize(count = n(),
+            delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(desc(delay))
+```
+
+## Group by multiple variables
+
+```{r}
+flights %>%
+  group_by(carrier, dest) %>%
+  summarize(count = n(),
+            delay = mean(arr_delay, na.rm = TRUE)) %>%
+  arrange(dest, desc(count))
+```
+
+## Save results and analyze
+
+```{r, fig.height = 3.5, fig.width=5, fig.align='center'}
+dd <- flights %>%
+  group_by(dest) %>%
+  summarize(delay = mean(arr_delay, na.rm = TRUE)) 
+hist(dd$delay)
+```
 
 ## **$\Rightarrow$** Summarize exercises
+
+1. Which carriers have the longest delays? 
+
+2. Which carriers have the most flights of distance greater than 1000?
+
+3. Did any airplanes (as identified by `tailnum`) fly multiple times? If so, which planes flew the most flights?
+
+4. Which destination cities have the fastest average flight speeds (`distance/air_time`)? Report only the cities having more than 10 flights.
+
+5. Is speed correlated to how long the flight is?
+
 
