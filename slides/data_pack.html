@@ -523,19 +523,24 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>Importing Data from a website</h2>
 <ul>
 <li>In the <a href="intro_stats.html">last lesson</a>, we read most of our data sets off of websites.</li>
-<li>This is fairly reproducible. (It would be better if the code and data were in the same place.)</li>
 <li>For many R commands, <code>file</code> can be a path to a local file, or a URL.</li>
+<li>This is fairly reproducible. (It would be better if the code and data were in the same place.)</li>
 </ul>
 </section><section id="rightarrow-make-a-new-project" class="slide level2">
 <h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Make a new project</h2>
-<p>To work with local data, it helps to use <em>Projects</em>.</p>
 <ol type="1">
 <li><p>In the <em>File</em> menu, choose <em>New Project…</em>. In the dialog that appears, select <em>New Directory</em> followed by <em>New Project</em>.</p></li>
 <li><p>For the <em>Directory Name</em>, use <code>DataWorkshop</code>. Click on <em>Browse</em> and find a subdirectory where you want this new directory to reside (e.g., Documents, Dropbox, etc.). You will need to be able to find this directory later.</p></li>
-<li><p>Click on <em>Create Project</em>. A new empty project should load. Take a look at the <em>Files</em> tab in the lower right pane.</p></li>
+<li><p>Click on <em>Create Project</em>. A new empty project should load. A file named <code>DataWorkshop.Rproj</code> should appear in the <em>Files</em> tab in the lower right pane.</p></li>
 </ol>
 </section><section id="rightarrow-make-a-new-rmarkdown-document" class="slide level2">
 <h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Make a new RMarkdown document</h2>
+<ol type="1">
+<li>In the <em>File</em> menu, choose <em>New File &gt; RMarkdown…</em>.</li>
+<li>In the “New R Markdown” dialog box, give the document a title. Keep the other default settings (Document, HTML).</li>
+<li>Clicking OK will open a new RMarkdown document with some boilerplate code. <em>Delete</em> everything below line 7.</li>
+<li><em>Save</em> the document as <code>datatidy.Rmd</code> in the project directory <code>DataWorkshop</code>. After you save the file, it should appear in the <em>Files</em> tab, along with the file <code>DataWorkshop.Rproj</code>.</li>
+</ol>
 </section><section id="importing-data-from-a-local-file" class="slide level2">
 <h2>Importing Data from a local file</h2>
 <ul>
@@ -548,6 +553,69 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>Download the Excel file <a href="http://math.westmont.edu/data/flights.xlsx">flights.xlsx</a> to your computer. <strong>Make sure it ends up in the project folder <code>DataWorkshop</code> that you just created.</strong> Depending on your browser settings, it may end up in your <code>Downloads</code> folder, and you will have to move it to the <code>DataWorkshop</code> folder.</li>
 <li>Refresh the view in the <em>Files</em> pane of your project, and make sure that the <code>flights.xlsx</code> file is there.</li>
 </ol>
+</section><section id="rightarrow-read-the-excel-file-and-view-3-ways" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Read the Excel file and view 3 ways</h2>
+<ol type="1">
+<li>Execute the following command in the terminal. The first line loads the tidyverse package <code>readxl</code>, and the second line reads the entire spreadsheet into the <code>flights</code> variable.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readxl)
+flights &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;flights.xlsx&quot;</span>)</code></pre></div>
+<ol start="2" type="1">
+<li><p>Type <code>flights</code> in the terminal.</p></li>
+<li>In the <em>Environment</em> tab in the upper-right corner, click on the triangle next to the word <code>flights</code>.</li>
+<li><p>In the <em>Environment</em> tab in the upper-right corner, click on the word <code>flights</code>.</p></li>
+</ol>
+</section><section id="tibbles" class="slide level2">
+<h2>Tibbles</h2>
+<ul>
+<li>The variable <code>flights</code> is a <code>tibble</code>, which is a data frame with additional features.</li>
+<li>Tibbles are part of the tidyverse.</li>
+<li>Tibbles can be treated just like data frames</li>
+</ul>
+</section></section>
+<section><section id="shaping-data" class="titleslide slide level1" data-background="https://laughingsquid.com/wp-content/uploads/2017/10/game-of-thrones-timelapse-of-an-artist-sculpting-and-airbrushing-a-bust-of-the-night-king.gif" data-background-size="contain"><h1><em>Shaping Data</em></h1></section><section id="shaping-your-data-with-dplyr" class="slide level2">
+<h2>Shaping your data with dplyr</h2>
+<p>The remainder of this lesson is adapted from the <a href="https://r4ds.had.co.nz/transform.html">Data transformation</a> chapter in <em>R for Data Science</em>.</p>
+</section><section id="dplyr-basics-five-functions" class="slide level2">
+<h2>Dplyr basics: Five functions</h2>
+<ul>
+<li>Pick observations by their values (<code>filter()</code>).</li>
+<li>Reorder the rows (<code>arrange()</code>).</li>
+<li>Pick variables by their names (<code>select()</code>).</li>
+<li>Create new variables with functions of existing variables (<code>mutate()</code>).</li>
+<li>Collapse many values down to a single summary (<code>summarise()</code>).</li>
+</ul>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Load the <code>dplyr</code> package in the console.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+</section><section id="filter" class="slide level2">
+<h2>Filter</h2>
+<p>Select observations based on their values.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(arr_delay <span class="op">&gt;</span><span class="st"> </span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## # A tibble: 29 x 19
+##     year month   day dep_time sched_dep_time dep_delay arr_time
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1  2013     1     1      811            630       101     1047
+##  2  2013     1     1      848           1835       853     1001
+##  3  2013     1     1      957            733       144     1056
+##  4  2013     1     1     1114            900       134     1447
+##  5  2013     1     1     1400           1250        70     1645
+##  6  2013     1     1     1505           1310       115     1638
+##  7  2013     1     1     1525           1340       105     1831
+##  8  2013     1     1     1540           1338       122     2020
+##  9  2013     1     1     1549           1445        64     1912
+## 10  2013     1     1     1558           1359       119     1718
+## # … with 19 more rows, and 12 more variables: sched_arr_time &lt;dbl&gt;,
+## #   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;dbl&gt;, tailnum &lt;chr&gt;,
+## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </section></section>
     </div>
   </div>
