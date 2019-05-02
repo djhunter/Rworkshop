@@ -2,6 +2,13 @@
 title: "Dealing with Data and Packages"
 date: "May 7, 2019"
 output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    df_print: paged
+    theme: spacelab
   revealjs::revealjs_presentation:
     fig_width: 14
     fig_height: 7
@@ -97,7 +104,7 @@ flights <- read_excel("flights.xlsx")
 
 - The variable `flights` is a `tibble`, which is a data frame with additional features.
 - Tibbles are part of the tidyverse.
-- Tibbles can be treated just like data frames
+- Tibbles can be treated just like data frames.
 
 # *Shaping Data* {data-background="https://laughingsquid.com/wp-content/uploads/2017/10/game-of-thrones-timelapse-of-an-artist-sculpting-and-airbrushing-a-bust-of-the-night-king.gif" data-background-size="contain"}
 
@@ -107,11 +114,13 @@ The remainder of this lesson is adapted from the [Data transformation](https://r
 
 ## Dplyr basics: Five functions
 
-- Pick observations by their values (`filter()`).
-- Reorder the rows (`arrange()`).
-- Pick variables by their names (`select()`).
-- Create new variables with functions of existing variables (`mutate()`).
-- Collapse many values down to a single summary (`summarise()`).
+- Pick observations by their values (`filter`).
+- Reorder the rows (`arrange`).
+- Pick variables by their names (`select`).
+- Create new variables with functions of existing variables (`mutate`).
+- Collapse many values down to a single summary (`summarise`).
+
+## Load Dplyr
 
 **$\Rightarrow$** Load the `dplyr` package in the console.
 
@@ -128,6 +137,170 @@ Select observations based on their values.
 flights %>% filter(arr_delay > 100)
 ```
 
+## Filter: Multiple conditions (AND)
+
+```{r}
+flights %>% filter(arr_delay > 100, day == 1)
+```
+
+## Filter: Multiple conditions (OR)
+
+```{r}
+flights %>% filter(arr_delay > 100 | day == 2)
+```
+
+## **$\Rightarrow$** Filter exercises
+
+1. Find all flights that flew to or from Houston (IAH or HOU).
+
+2. Find all flights that had a departure delay of more than one hour, but also made up at least 15 minutes during the flight.
+
+## Arrange
+
+Arrange sorts rows by given column(s).
+
+```{r}
+flights %>% arrange(dep_delay)
+```
+
+## Arrange in descending order
+
+```{r}
+flights %>% arrange(desc(dep_delay))
+```
+
+## Arrange with multiple keys
+
+```{r}
+flights %>% arrange(dep_delay, arr_delay)
+```
 
 
+## **$\Rightarrow$** Arrange exercises
+
+1. Sort the rows by the amount of time made up during the flight, from most to least.
+
+2. Four of the flights in our Excel file (rows 840-843) had missing values for `dep_delay`. How does R represent missing values? When the rows are sorted by `dep_delay`, where do these end up?
+
+## Select
+
+Select columns you would like to see.
+
+```{r}
+flights %>% select(air_time, dep_delay, arr_delay)
+```
+
+## Move some columns to front
+
+Use the `everything()` helper to select columns you want on the left.
+
+```{r}
+flights %>% select(carrier, flight, everything())
+```
+
+## Remove selected columns
+
+```{r}
+flights %>% select(-year, -month)
+```
+
+## **$\Rightarrow$** Select exercises
+
+1. Make the first column the `tailnum`, and remove the `time_hour` column.
+
+2. Try using `select(contains("time"))`. What happens?
+
+# *Pipes* {data-background="https://static.cms.yp.ca/ecms/media/1/pipes-1445309646-600x360.jpg"}
+
+## Combinations with pipes
+
+- Often we want to perform operations in sequence.
+- The "pipe" operator `%>%` sends the result of the last command to a new command.
+- For readability, do one operation per line. Work from a code block, not the console.
+
+## Filter then arrange
+
+```{r}
+flights %>% 
+  filter(arr_delay > 100) %>%
+  arrange(arr_delay)
+```
+
+## Filter then arrange then select
+
+```{r}
+flights %>% 
+  filter(arr_delay > 100) %>%
+  arrange(arr_delay) %>%
+  select(carrier, flight, arr_delay)
+```
+
+## **$\Rightarrow$** Combo exercises
+
+1. For flights departing from `JFK`, sort them by distance (largest to smallest), and display the carrier and destination city.
+
+2. Does the order of `arrange` and `select` matter? Experiment.
+
+# *Computations* {data-background="https://image1.masterfile.com/getImage/NzAwLTAyMjAwNTc4ZW4uMDAwMDAwMDA=AM5J$Z/700-02200578en_Masterfile.jpg"}
+
+## Mutate
+
+Add new columns based on existing ones. The new column goes at the end.
+
+```{r}
+flights %>% mutate(gain = dep_delay - arr_delay)
+```
+
+## Mutate and select
+
+Let's select some of the columns so we can see our new variables.
+
+```{r}
+flights %>% 
+  mutate(gain = dep_delay - arr_delay) %>%
+  select(tailnum, origin, dest, gain)
+```
+
+## Multiple new columns
+
+```{r}
+flights %>% 
+  mutate(gain = dep_delay - arr_delay,
+         hours = air_time / 60,
+         gain_per_hour = gain / hours) %>%
+  select(tailnum, origin, dest, gain, hours, gain_per_hour)
+```
+
+## Transmute
+
+`transmute` just gives you back the new variables.
+
+```{r}
+flights %>% 
+  transmute(gain = dep_delay - arr_delay,
+         hours = air_time / 60,
+         gain_per_hour = gain / hours) 
+```
+
+## **$\Rightarrow$** Mutate exercises
+
+1. Compare `air_time` with `arr_time - dep_time`. What do you expect to see? What do you see? What needs to be fixed?
+
+2. Sort the flights by `gain_per_hour` (see above) and display the 20 highest gains, in order, along with the carrier and flight number.
+
+## Summarize
+
+Collapse the data into a single row.
+
+```{r}
+flights %>% 
+  summarize(mean_dist = mean(distance), 
+            sd_dist = sd(distance))
+```
+
+## Grouped summaries
+
+
+
+## **$\Rightarrow$** Summarize exercises
 
