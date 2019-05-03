@@ -59,7 +59,7 @@ mpg
 
 Use the tidyverse data transformations to create a list of all the auto manufacturers, along with the average city mpg of their vehicles, sorted from most fuel-efficient to least.
 
-# using GGplot
+# *using GGplot* {data-background="https://www.r-graph-gallery.com/wp-content/uploads/2017/12/327_Chloropleth_geoJSON_ggplot2_4-800x600.png"}
 
 ## Data Visualization
 
@@ -73,6 +73,8 @@ Most of this lesson is adapted from [Chapter 3](https://r4ds.had.co.nz/data-visu
 -  `aes()` specifies which variables are represented by different properties of the graph (aesthetics).
 - There are lots of different `geom`'s. You can add layers to the plot with `+`'s.
 
+# *Scatterplots* {data-background="https://cdn1.autoexpress.co.uk/sites/autoexpressuk/files/2016/07/dsc_6125_0.jpg" data-background-size="contain"}
+
 ## ggplot scatterplot
 
 ```{r, fig.width=7, fig.height=4, fig.align='center'}
@@ -85,4 +87,64 @@ ggplot(mpg) + geom_point(aes(x=displ, y=hwy))
 ggplot(mpg) + geom_point(aes(x=displ, y=hwy, color = class))
 ```
 
+## Sizing dots
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(mpg) + geom_point(aes(x=displ, y=hwy, color = class, size=cyl))
+```
+
+## Manual settings
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(mpg) + geom_point(aes(x=displ, y=hwy), color = "blue")
+```
+
+## Manual settings (wrong: why?)
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(mpg) + geom_point(aes(x=displ, y=hwy, color = "blue"))
+```
+
+## **$\Rightarrow$** Scatterplot exercises
+
+1. Map a continuous variable to `color`, `size`, and `shape`. 
+
+2. Map the same variable to multiple aesthetics.
+
+3. What does the `stroke` aesthetic do? What shapes does it work with? (Hint: use `vignette("ggplot2-specs")`.)
+
+4. What happens if you map an aesthetic to something other than a variable name, like `aes(color = displ < 5)`? Note, you’ll also need to specify `x` and `y`.
+
+# *Adding geometries* {data-background="http://oscarperpinan.github.io/spacetime-vis/images/unemployUSAThemeRiver.png"}
+
+## Facet Grid
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+```
+
+## Facet Grid (collapsed)
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(. ~ cyl)
+```
+
+## Facet Wrap
+
+```{r, fig.width=7, fig.height=4, fig.align='center'}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+```
+
+
+## **$\Rightarrow$** Geometry exercises
+
+i. Read `?facet_wrap`. What does `nrow` do? What does `ncol` do? Why doesn’t `facet_grid()` have these arguments?
+
+# *Bar graphs and more* {data-background="http://www.colonialjewelers.com/wp-content/uploads/2017/01/diamonds.jpg"}
 
