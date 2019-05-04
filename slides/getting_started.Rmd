@@ -24,8 +24,9 @@ output:
 
 >- Reproducibility
 >- Powerful
->- Free (as in speech)
->- Free (as in beer)
+>- Very deep community of support
+>- Free (*gratis*)
+>- Free (*libre*)
 
 ## Overview
 
@@ -35,6 +36,7 @@ output:
 >- Workflow
 >     - Scripts
 >     - RMarkdown notebooks
+>- By the end of this lesson, you should be able to do some simple data analysis in R and compose an HTML email with the results.
 
 ## Workshop materials
 
@@ -240,5 +242,8 @@ plot(iris[,c(2,4)])
 
 ## **$\Rightarrow$** Write a report
 
-**$\Rightarrow$** Load the `mtcars` data set. Type `?mtcars` in the console to see a description of this data set. Create a new RMarkdown file in which you calculate a `summary` of this data, and `plot` a scatterplot of two of the variables. Include in your RMarkdown file a description of what the scatter plot tells you. When your report is finished, *Knit* it to HTML. Then copy and paste the HTML output into an email and send it to yourself.
+**$\Rightarrow$** [Load](#/built-in-data-sets-iris) the `mtcars` data set. Type `?mtcars` in the console to see a description of this data set. [Create a new RMarkdown file](#/rightarrow-make-an-rmarkdown-document) in which you [calculate a summary](#/quick-summary) of this data, and [plot a scatterplot](#/quick-scatterplot) of two of the variables. [Add a description](#/rightarrow-add-a-code-chunk-text-and-knit) in your RMarkdown document of what the scatter plot tells you. When your report is finished, [Knit it to HTML](#/rightarrow-add-a-code-chunk-text-and-knit). Then copy and paste the HTML output into an email and send it to yourself.
+
+*Hint:* Links in the above paragraph will scroll to the relevant slides. Use the arrow keys to get back.
+
 
