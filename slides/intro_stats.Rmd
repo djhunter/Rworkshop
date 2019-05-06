@@ -85,13 +85,12 @@ prop.test(54, 83, p = 0.5)
 
 ## **$\Rightarrow$** Save your work
 
-5. Above the editor pane for your RMarkdown document, click on the *$^+C$ Insert* button, and choose *R* from the drop down menu. Inside the code chunk that appears, enter the code that workd for steps 1-4. 
+5. Above the editor pane for your RMarkdown document, click on the *$^+C$ Insert* button, and choose *R* from the drop down menu. Inside the code chunk that appears, enter the code that worked for steps 1-4. 
 6. Add some text above or below the code chunk explaining what these commands do. 
 7. *Knit* and view the HTML output.
 
 ## One-Sample $t$-test
 
-sleep 
 ```{r}
 sleep <- read.table("http://math.westmont.edu/ma5/classSleep.txt", header = TRUE)
 sleep
