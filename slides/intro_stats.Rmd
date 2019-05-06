@@ -309,7 +309,7 @@ summary(lm(Price ~ Pages, data = textbooks))
 cor(textbooks)
 ```
 
-# *Resources for other scenarios* {data-background="https://imgs.xkcd.com/comics/correlation.png" data-background-size="contain"}
+# *Other scenarios* {data-background="https://imgs.xkcd.com/comics/correlation.png" data-background-size="contain"}
 
 ## UCLA Test Chooser
 
