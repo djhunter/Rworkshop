@@ -496,19 +496,21 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <h3 class="date">May 7, 2019</h3>
 </section>
 
-<section><section id="extending-r-with-packages" class="titleslide slide level1" data-background="https://pbs.twimg.com/media/CvzEQcfWIAAIs-N.jpg" data-background-size="contain"><h1>Extending R with packages</h1></section><section id="packages-in-r" class="slide level2">
+<section><section id="extending-r-with-packages" class="titleslide slide level1" data-background="https://pbs.twimg.com/media/CvzEQcfWIAAIs-N.jpg" data-background-size="contain"><h1>Extending R with packages</h1></section><section id="install-the-tidyverse" class="slide level2">
+<h2>Install the Tidyverse</h2>
+<p>We will be using a suite of packages designed for data science.</p>
+<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Install the <code>tidyverse</code> by executing the following command in the console:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>This installation may take a few moments.</p>
+</section><section id="section" class="slide level2" data-background="http://www.pajiba.com/assets_c/2019/05/Game-of-thrones-coffee-cup-thumb-700x382-211019.jpg" data-background-size="contain">
+<h2></h2>
+</section><section id="packages-in-r" class="slide level2">
 <h2>Packages in R</h2>
 <ul>
 <li class="fragment">So far, we have been using “base” R.</li>
 <li class="fragment">One of the most compelling reasons to use R is the enormous ecosystem of packages that extend its capabilities.</li>
 <li class="fragment"><a href="https://cran.rstudio.com/web/views/">CRAN task view</a></li>
 </ul>
-</section><section id="install-the-tidyverse" class="slide level2">
-<h2>Install the Tidyverse</h2>
-<p>We will be using a suite of packages designed for data science.</p>
-<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Install the <code>tidyverse</code> by executing the following command in the console:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
-<p>This installation may take a few moments.</p>
 </section></section>
 <section><section id="getting-data-into-r" class="titleslide slide level1" data-background="https://tr2.cbsistatic.com/hub/i/2016/05/27/b6dd6d05-84b0-4eeb-ad7f-ddea46d0f15c/unexpected-error.jpg" data-background-size="contain"><h1><em>Getting Data into R</em></h1></section><section id="reproducibilty-principles" class="slide level2">
 <h2>Reproducibilty principles</h2>
@@ -526,6 +528,13 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>For many R commands, <code>file</code> can be a path to a local file, or a URL.</li>
 <li>This is fairly reproducible. (It would be better if the code and data were in the same place.)</li>
 </ul>
+</section><section id="tidyverse-packages-for-importing-data" class="slide level2">
+<h2>Tidyverse packages for importing data</h2>
+<ul>
+<li><code>readxl</code> provides <code>read_excel</code></li>
+<li><code>readr</code> provides <code>read_csv</code>, <code>read_tsv</code>, <code>read_table</code>, <code>read_delim</code>, etc.</li>
+</ul>
+<p>See help menus for details</p>
 </section><section id="rightarrow-make-a-new-project" class="slide level2">
 <h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Make a new project</h2>
 <ol type="1">

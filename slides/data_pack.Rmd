@@ -27,12 +27,6 @@ output:
 
 # Extending R with packages {data-background="https://pbs.twimg.com/media/CvzEQcfWIAAIs-N.jpg" data-background-size="contain"}
 
-## Packages in R
-
->- So far, we have been using "base" R.
->- One of the most compelling reasons to use R is the enormous ecosystem of packages that extend its capabilities.
->- [CRAN task view](https://cran.rstudio.com/web/views/)
-
 ## Install the Tidyverse
 
 We will be using a suite of packages designed for data science.
@@ -44,6 +38,14 @@ install.packages("tidyverse")
 ```
 
 This installation may take a few moments.
+
+## {data-background="http://www.pajiba.com/assets_c/2019/05/Game-of-thrones-coffee-cup-thumb-700x382-211019.jpg" data-background-size="contain"}
+
+## Packages in R
+
+>- So far, we have been using "base" R.
+>- One of the most compelling reasons to use R is the enormous ecosystem of packages that extend its capabilities.
+>- [CRAN task view](https://cran.rstudio.com/web/views/)
 
 # *Getting Data into R* {data-background="https://tr2.cbsistatic.com/hub/i/2016/05/27/b6dd6d05-84b0-4eeb-ad7f-ddea46d0f15c/unexpected-error.jpg" data-background-size="contain"}
 
@@ -60,6 +62,13 @@ This installation may take a few moments.
 - In the [last lesson](intro_stats.html), we read most of our data sets off of websites.
 - For many R commands, `file` can be a path to a local file, or a URL.
 - This is fairly reproducible. (It would be better if the code and data were in the same place.)
+
+## Tidyverse packages for importing data
+
+- `readxl` provides `read_excel`
+- `readr` provides `read_csv`, `read_tsv`, `read_table`, `read_delim`, etc.
+
+See help menus for details
 
 ## **$\Rightarrow$** Make a new project
 
