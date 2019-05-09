@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This site was originally created for a faculty workshop held at Westmont College in May of 2019. The purpose of the workshop is to introduce colleagues from a range of disciplines to R, giving them resources for using R in their teaching and research.
 
-# Workshop Resources 
+# Workshop Slides 
 
 ## [Getting started: Variables, Data Frames, and Workflow](slides/getting_started.html) 
 
@@ -39,6 +39,12 @@ Get started using the [ggplot2](https://ggplot2.tidyverse.org/) library to creat
 
 Streamline your projects by writing your own functions, and apply them over a range of data using *vectorization* instead of iteration.
 
+# Other resources
+
+## [Worksheets](worksheets/index.html)
+
+This page contains an index of the RMarkdown worksheets that go with the slides.
+
 ## Workshop Prerequisites
 
 * Bring a laptop that uses OSX, Windows, or Linux. (If you would like to use a Chromebook, let me know and I will give you an account on our statistics server.)
@@ -46,7 +52,7 @@ Streamline your projects by writing your own functions, and apply them over a ra
     + **First,** [download and install R](https://cran.rstudio.com/).
     + **Second,** [download and install RStudio](https://www.rstudio.com/products/rstudio/download/).
     
-# Other Resources
+# Helpful websites
 
 * The [CRAN Task Views page](https://cran.rstudio.com/web/views/) is a good place to discover hundreds (thousands?) of popular R packages, organized by discipline, available from the [Comprehensive R Archive Network](https://cran.rstudio.com/).
 * [The R Inferno](https://www.burns-stat.com/pages/Tutor/R_inferno.pdf), by Patrick Burns, is a helpful guide for programmers who want to understand how R is different from other programming languages.

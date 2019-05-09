@@ -137,32 +137,43 @@ You can define a sequence of numbers using the `:` operator.
 
 **$\Rightarrow$** Update your script so it computes $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}$. (Compare the answer to $\pi^2/6-1$.)
 
-## RMarkdown Documents
+# *RMarkdown Documents* {data-background="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png" data-background-size="contain"}
+
+## Why RMarkdown?
 
 RMarkdown Documents allow for 
 
-- text next to code (notes, etc)
-- various output formats (e.g., these slides)
+- code blocks that act like the console, but can be executed inline.
+- text next to code (notes, etc).
+- various output formats (e.g., these slides).
+- a way to provide students "worksheets" with questions and code examples.
+- a way to respond to email questions with formatted output and graphs.
 
-## **$\Rightarrow$** Make an RMarkdown Document
+## **$\Rightarrow$** A Simple RMarkdown Document
 
-1. In the *File* menu, choose *New File > RMarkdown...*.
-2. In the "New R Markdown" dialog box, give the document a title. Keep the other default settings (Document, HTML).
-3. Clicking OK will open a new RMarkdown document with some boilerplate code. *Delete* everything below line 7. 
-4. *Save* the file to a location and name you will remember. The file name should end in `.Rmd`.
-
-## **$\Rightarrow$** Add a code chunk, text, and Knit
-
-5. Click on the *$^+C$ Insert* button, and choose *R* from the drop down menu. Inside the code chunk that appears, enter your code from the script you wrote. You can execute this code using the *$\rhd$* button in the corner of the chunk.
-6. Add some text above and below the code chunk. These can be notes to yourself explaining what you just did. 
-7. Try clicking the *Knit* button. If it asks you to install some packages, say "yes".
+1. *Save* the file [simple.Rmd](../worksheets/simple.Rmd) to a location on your computer that you will remember. (You may want to right click or two-finger click and choose *Save Link As...*.)
+2. Open the file `simple.Rmd` in RStudio. There are at least 3 ways to do this:
+    a. `.Rmd` files should be associated to RStudio, so clicking on them in a file manager should open them in RStudio.
+    b. Use the *File...* menu in RStudio.
+    c. Use the *Files* tab in the lower-right pane.
+3. Try clicking the *Knit* button. If it asks you to install some packages, say "yes".
 
 ## What happens when you knit?
 
 - Your RMarkdown file gets saved.
 - Every code chunk gets executed in a *new* environment.
-- An output file gets "knitted" together.
+- An output file (HTML, in this case) gets "knitted" together and saved in the same folder.
 - The output file gets displayed.
+
+## **$\Rightarrow$** Put your code in a chunk
+
+4. The file `simple.Rmd` contains a *code chunk* with the command `2+2`. Notice that you can execute this code using the *$\rhd$* button in the corner of the chunk.
+
+5. In place of the line `2+2`, insert the lines of code that you wrote for computing the sum $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}$. Be careful not to delete the lines $\verb!```{r}!$ and $\verb!```!$ that delimit the code chunk. 
+
+6. Add some text at the end of the document. Notice that blank lines in RMarkdown will create paragraph breaks in the output. 
+
+7. Check that your code worked by using the *$\rhd$* button in the corner of the chunk. Also, *Knit* your file to view the output.
 
 # *Variables and Data Frames* {data-background="https://cdn-images-1.medium.com/fit/t/1600/480/0*Uw37vrrKzeEWahdB" data-background-size="contain"}
 
@@ -242,8 +253,13 @@ plot(iris[,c(2,4)])
 
 ## **$\Rightarrow$** Write a report
 
-**$\Rightarrow$** [Load](#/built-in-data-sets-iris) the `mtcars` data set. Type `?mtcars` in the console to see a description of this data set. [Create a new RMarkdown file](#/rightarrow-make-an-rmarkdown-document) in which you [calculate a summary](#/quick-summary) of this data, and [plot a scatterplot](#/quick-scatterplot) of two of the variables. [Add a description](#/rightarrow-add-a-code-chunk-text-and-knit) in your RMarkdown document of what the scatter plot tells you. When your report is finished, [Knit it to HTML](#/rightarrow-add-a-code-chunk-text-and-knit). Then copy and paste the HTML output into an email and send it to yourself.
+1. Download the worksheet file [report.Rmd](../worksheets/report.Rmd) and open in in RStudio.
 
-*Hint:* Links in the above paragraph will scroll to the relevant slides. Use the arrow keys to get back.
+2. Execute the first code chunk to load the `mtcars` data set and view it.
+
+3. The other code chunks are empty, except for `TODO` comments. In the first chunk, [calculate a summary](#/quick-summary) of this data. In the second, [plot a scatterplot](#/quick-scatterplot) of two of the variables. 
+
+4.  When your report is finished, *Knit* it to HTML. Click the *Open in Browser* button to view the output in your default browser. Try copying the HTML output and pasting it into an email to yourself. (Some browsers work better than others for this task.)
+
 
 

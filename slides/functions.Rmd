@@ -1,0 +1,60 @@
+---
+title: "Graphics"
+date: "May 7, 2019"
+output: 
+  revealjs::revealjs_presentation:
+    fig_width: 14
+    fig_height: 7
+    self_contained: true
+    theme: black
+    highlight: zenburn
+    css: slidesdjh.css
+    center: false
+    transition: slide
+    reveal_options:
+      controls: true
+      progress: false
+      width: 1080
+      height: 600
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    df_print: paged
+    theme: spacelab
+---
+
+# Functions and Programming
+
+## Permutation Test
+
+```{r}
+wordmem <- read.table("http://www.isi-stats.com/isi/data/chap6/Chap6%20Investigation.txt", header = TRUE)
+wordmem
+boxplot(wordmem$Memorized ~ wordmem$Words, horizontal = TRUE)
+library(ggplot2)
+ggplot(wordmem, aes(Memorized, fill = Words)) + geom_histogram(position = "dodge", binwidth = 2)
+ggplot(wordmem, aes(Memorized, fill = Words)) + geom_density(alpha = 0.2)
+num_samples <- 10000
+n1 <- sum(wordmem$Words == "Recognizable")
+n2 <- sum(wordmem$Words == "NotRecognizable")
+n <- n1 + n2
+cards <- wordmem$Memorized
+set.seed(1977) # for reproducibility
+pile1 <- replicate(num_samples, sample(n, n1))
+sim_stats <- sapply(1:num_samples, function(i) {mean(cards[pile1[,i]]) - mean(cards[-pile1[,i]])})
+observed_diff <- mean(wordmem[which(wordmem$Words == "Recognizable"),]$Memorized) -
+  mean(wordmem[which(wordmem$Words == "NotRecognizable"),]$Memorized)
+p_value <- sum((sim_stats >= abs(observed_diff)) | 
+                 (sim_stats <= -abs(observed_diff)))/num_samples
+cat("Observed difference of means:", observed_diff, "\n",
+    "Two-sided p-value =", p_value, "\n",
+    "SD_null =", sd(sim_stats))
+ssdf <- data.frame(sim_stats)
+require(ggplot2)
+p <- ggplot(ssdf, aes(x=sim_stats)) + geom_density()
+d <- ggplot_build(p)$data[[1]]
+p + geom_area(data = subset(d, x > abs(observed_diff)), aes(x=x, y=y), fill="red", alpha=0.5) +
+    geom_area(data = subset(d, x < -abs(observed_diff)), aes(x=x, y=y), fill="red", alpha=0.5)
+```

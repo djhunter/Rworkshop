@@ -1,0 +1,17 @@
+---
+title: "A Simple RMarkdown Template"
+output:
+  html_document:
+    df_print: paged
+    theme: spacelab
+---
+
+This is a simple RMarkdown document. When you click the *Knit* button, this document should be formatted into an HTML document, which will then be displayed.
+
+The following structure is a *code chunk*. You can execute code chunks by clicking the triangular "play" button in the upper-right corner of the chunk. Try it: the output should appear below the code chunk in the editor pane.
+
+```{r}
+2+2
+```
+
+In the code chunk above, remove the line `2+2`, and in its place, insert the lines of code that you wrote for computing the sum $\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}$. Then press the "play" button and check that it worked. Finally, *Knit* this file, and observe the output.

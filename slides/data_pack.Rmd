@@ -97,14 +97,14 @@ See help menus for details
 
 ## **$\Rightarrow$** Read the Excel file and view 3 ways
 
-1. Execute the following command in the terminal. The first line loads the tidyverse package `readxl`, and the second line reads the entire spreadsheet into the `flights` variable.
+1. Execute the following command in the console. The first line loads the tidyverse package `readxl`, and the second line reads the entire spreadsheet into the `flights` variable.
 
 ```{r}
 library(readxl)
 flights <- read_excel("flights.xlsx")
 ```
 
-2. Type `flights` in the terminal.
+2. Type `flights` in the console.
 
 3. In the *Environment* tab in the upper-right corner, click on the triangle next to the word `flights`.
 4. In the *Environment* tab in the upper-right corner, click on the word `flights`.

@@ -1,0 +1,38 @@
+---
+title: "Reports using RMarkdown"
+output:
+  html_document:
+    df_print: paged
+    theme: spacelab
+---
+
+## Load the `mtcars` data
+
+The following code chunk will load the built-in data set `mtcars` and display it. Before proceeding, you will need to execute this code chunk using the "play" button.
+
+```{r}
+data("mtcars")
+mtcars
+```
+
+## Summarize the data
+
+The first line of the code chunk below is a *comment*. In R syntax, lines that begin with a hashtag `#` are ignored. In this code chunk, insert code that calculates a summary of the `mtcars` data.
+
+```{r}
+## TODO: Compute a summary of the mtcars data
+
+```
+
+## Make a scatterplot
+
+In the code chunk below, plot a scatterplot of two of the variables in this data set.
+
+```{r}
+## TODO: Create a scatterplot
+
+```
+
+## Send yourself an HTML email
+
+When you finish these tasks, *Knit* this file to create HTML output. Click the *Open in Browser* button to view the output in your default browser. Try copying the HTML output and pasting it into an email that you send to yourself. Some browsers (e.g., Chrome, Firefox) may work better than others (e.g., Safari) for this task.

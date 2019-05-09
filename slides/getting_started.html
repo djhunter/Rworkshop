@@ -633,26 +633,27 @@ joe<span class="op">^</span><span class="dv">2</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
 <pre><code>## [1]  2  3  4  5  6  7  8  9 10</code></pre>
 <p><strong><span class="math inline">\(\Rightarrow\)</span></strong> Update your script so it computes <span class="math inline">\(\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}\)</span>. (Compare the answer to <span class="math inline">\(\pi^2/6-1\)</span>.)</p>
-</section><section id="rmarkdown-documents" class="slide level2">
-<h2>RMarkdown Documents</h2>
+</section></section>
+<section><section id="rmarkdown-documents" class="titleslide slide level1" data-background="https://bookdown.org/yihui/rmarkdown/images/hex-rmarkdown.png" data-background-size="contain"><h1><em>RMarkdown Documents</em></h1></section><section id="why-rmarkdown" class="slide level2">
+<h2>Why RMarkdown?</h2>
 <p>RMarkdown Documents allow for</p>
 <ul>
-<li>text next to code (notes, etc)</li>
-<li>various output formats (e.g., these slides)</li>
+<li>code blocks that act like the console, but can be executed inline.</li>
+<li>text next to code (notes, etc).</li>
+<li>various output formats (e.g., these slides).</li>
+<li>a way to provide students “worksheets” with questions and code examples.</li>
+<li>a way to respond to email questions with formatted output and graphs.</li>
 </ul>
-</section><section id="rightarrow-make-an-rmarkdown-document" class="slide level2">
-<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Make an RMarkdown Document</h2>
+</section><section id="rightarrow-a-simple-rmarkdown-document" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> A Simple RMarkdown Document</h2>
 <ol type="1">
-<li>In the <em>File</em> menu, choose <em>New File &gt; RMarkdown…</em>.</li>
-<li>In the “New R Markdown” dialog box, give the document a title. Keep the other default settings (Document, HTML).</li>
-<li>Clicking OK will open a new RMarkdown document with some boilerplate code. <em>Delete</em> everything below line 7.</li>
-<li><em>Save</em> the file to a location and name you will remember. The file name should end in <code>.Rmd</code>.</li>
-</ol>
-</section><section id="rightarrow-add-a-code-chunk-text-and-knit" class="slide level2">
-<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Add a code chunk, text, and Knit</h2>
-<ol start="5" type="1">
-<li>Click on the <em><span class="math inline">\(^+C\)</span> Insert</em> button, and choose <em>R</em> from the drop down menu. Inside the code chunk that appears, enter your code from the script you wrote. You can execute this code using the <em><span class="math inline">\(\rhd\)</span></em> button in the corner of the chunk.</li>
-<li>Add some text above and below the code chunk. These can be notes to yourself explaining what you just did.</li>
+<li><em>Save</em> the file <a href="../worksheets/simple.Rmd">simple.Rmd</a> to a location on your computer that you will remember. (You may want to right click or two-finger click and choose <em>Save Link As…</em>.)</li>
+<li>Open the file <code>simple.Rmd</code> in RStudio. There are at least 3 ways to do this:
+<ol type="a">
+<li><code>.Rmd</code> files should be associated to RStudio, so clicking on them in a file manager should open them in RStudio.</li>
+<li>Use the <em>File…</em> menu in RStudio.</li>
+<li>Use the <em>Files</em> tab in the lower-right pane.</li>
+</ol></li>
 <li>Try clicking the <em>Knit</em> button. If it asks you to install some packages, say “yes”.</li>
 </ol>
 </section><section id="what-happens-when-you-knit" class="slide level2">
@@ -660,9 +661,17 @@ joe<span class="op">^</span><span class="dv">2</span></code></pre></div>
 <ul>
 <li>Your RMarkdown file gets saved.</li>
 <li>Every code chunk gets executed in a <em>new</em> environment.</li>
-<li>An output file gets “knitted” together.</li>
+<li>An output file (HTML, in this case) gets “knitted” together and saved in the same folder.</li>
 <li>The output file gets displayed.</li>
 </ul>
+</section><section id="rightarrow-put-your-code-in-a-chunk" class="slide level2">
+<h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Put your code in a chunk</h2>
+<ol start="4" type="1">
+<li><p>The file <code>simple.Rmd</code> contains a <em>code chunk</em> with the command <code>2+2</code>. Notice that you can execute this code using the <em><span class="math inline">\(\rhd\)</span></em> button in the corner of the chunk.</p></li>
+<li><p>In place of the line <code>2+2</code>, insert the lines of code that you wrote for computing the sum <span class="math inline">\(\frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{1000000^2}\)</span>. Be careful not to delete the lines <span class="math inline">\(\verb!```{r}!\)</span> and <span class="math inline">\(\verb!```!\)</span> that delimit the code chunk.</p></li>
+<li><p>Add some text at the end of the document. Notice that blank lines in RMarkdown will create paragraph breaks in the output.</p></li>
+<li><p>Check that your code worked by using the <em><span class="math inline">\(\rhd\)</span></em> button in the corner of the chunk. Also, <em>Knit</em> your file to view the output.</p></li>
+</ol>
 </section></section>
 <section><section id="variables-and-data-frames" class="titleslide slide level1" data-background="https://cdn-images-1.medium.com/fit/t/1600/480/0*Uw37vrrKzeEWahdB" data-background-size="contain"><h1><em>Variables and Data Frames</em></h1></section><section id="data-frames-in-r" class="slide level2">
 <h2>Data Frames in R</h2>
@@ -1225,8 +1234,12 @@ iris</code></pre></div>
 </section></section>
 <section><section id="explore-some-data" class="titleslide slide level1" data-background="https://i.giphy.com/media/l2R0e9y6A304JkFOg/giphy.webp" data-background-size="contain"><h1><em>Explore Some data</em></h1></section><section id="rightarrow-write-a-report" class="slide level2">
 <h2><strong><span class="math inline">\(\Rightarrow\)</span></strong> Write a report</h2>
-<p><strong><span class="math inline">\(\Rightarrow\)</span></strong> <a href="#//built-in-data-sets-iris">Load</a> the <code>mtcars</code> data set. Type <code>?mtcars</code> in the console to see a description of this data set. <a href="#//rightarrow-make-an-rmarkdown-document">Create a new RMarkdown file</a> in which you <a href="#//quick-summary">calculate a summary</a> of this data, and <a href="#//quick-scatterplot">plot a scatterplot</a> of two of the variables. <a href="#//rightarrow-add-a-code-chunk-text-and-knit">Add a description</a> in your RMarkdown document of what the scatter plot tells you. When your report is finished, <a href="#//rightarrow-add-a-code-chunk-text-and-knit">Knit it to HTML</a>. Then copy and paste the HTML output into an email and send it to yourself.</p>
-<p><em>Hint:</em> Links in the above paragraph will scroll to the relevant slides. Use the arrow keys to get back.</p>
+<ol type="1">
+<li><p>Download the worksheet file <a href="../worksheets/report.Rmd">report.Rmd</a> and open in in RStudio.</p></li>
+<li><p>Execute the first code chunk to load the <code>mtcars</code> data set and view it.</p></li>
+<li><p>The other code chunks are empty, except for <code>TODO</code> comments. In the first chunk, <a href="#//quick-summary">calculate a summary</a> of this data. In the second, <a href="#//quick-scatterplot">plot a scatterplot</a> of two of the variables.</p></li>
+<li><p>When your report is finished, <em>Knit</em> it to HTML. Click the <em>Open in Browser</em> button to view the output in your default browser. Try copying the HTML output and pasting it into an email to yourself. (Some browsers work better than others for this task.)</p></li>
+</ol>
 </section></section>
     </div>
   </div>
