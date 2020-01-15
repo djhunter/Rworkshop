@@ -1,0 +1,48 @@
+# Getting Started Using R
+
+## Your Name Here
+
+This is a simple R Markdown file to illustrate the RStudio interface. Except for Question #4 below, this assignment is almost identical to the first assignment I give my MA-005 students. The instructions below assume that you have managed to open this file in RStudio. Follow the instructions in the numbered questions to complete this assignment.
+
+> 1. On the third line of this file, replace the string "Your Name Here" with your name.
+
+## Use R as a calculator
+
+Below is an R code block containing some arithmetic expressions. (Code blocks start and end with three grave accents.) In the editor window, if you click on the play button (the little triangle in the corner), you can see the result of executing the code. 
+
+> 2. Add a third line to this code block containing an arithmetic expression to calculate the average of the numbers 234 and 750. Click the play button to check that it worked.
+
+```{r}
+2+2
+3*(sqrt(2) - 17/24)
+```
+
+## Read data and plot it
+
+R makes a good calculator, but it can do just about every statistical task imaginable. For example, the code block below reads some data from a file and plots it in the form of a scatterplot. Press the play button to see the output.
+
+```{r}
+tvlife <- read.table("http://www.isi-stats.com/isi/data/chap10/TVLife.txt", header = TRUE)
+plot(tvlife)
+```
+
+## What statistical techniques do you want to be able to do?
+
+In MA-005, students learn how to do t-tests, paired t-tests, chi-square tests, one-way ANOVA, regression, and multiple regression, along with the associated confidence intervals and graphs. They also learn how to do the simulation-based (nonparametric) versions of some of these tests.
+
+However, much of the work my students do in these assignments involves writing sentences to explain statistical concepts. You can type your answers in this RMarkdown file in the lines following the questions.
+
+> 3. In the space below this question, write one or more sentences telling me what statistical techniques you would like to be able to do in R. Include any of the MA-005 topics if you would like, along with any more advanced topics. (Be sure to leave a blank line before and after your response.)
+
+
+
+## Save, then turn in your final draft on Canvas
+
+> 4. When you are finished with questions 1-4, save the work that you have done in this `.Rmd` file. Upload this file to Canvas by clicking on the "Submit Assignment" button in the assignment description on Canvas, and then following the directions to upload this file.
+
+## Optional: View the output as HTML
+
+You can view all of your work in a more easy-to-read format by "knitting" this file to an HTML file. At the top of the window where the R Markdown code appears, there should be an icon labeled "Knit" that looks like a ball of yarn. Click on this icon to Knit the file to HTML output. Doing so will create an HTML file and open a new window displaying this file. It may ask you to install some additional packages to finish knitting; go ahead and give it permission.
+
+If you want to print out a copy for your own records, click the button in the preview window labeled "Open in Browser." Doing so will open up your default web browser, and you should be able to print the output from there.
+
