@@ -1,0 +1,431 @@
+# Basic Statistical Tests in R
+
+This RMarkdown document illustrates how to do most basic statistical tests in R. Remember that the code blocks contain R code and can be executed by clicking the triangular "play" button in the corner. Everything outside of the code blocks can be used for keeping notes. Headings are preceded by hash tags.
+
+You can insert new code blocks by clicking on "Insert" icon on the top of the Source pane. Alternatively, you can just type the beginning and ending delimiters (three grave accents, with {r} at the beginning).
+
+```{r}
+2+2
+```
+
+## Why R?
+
+- Reproducibility (for you and for others)
+- Powerful
+- Very deep community of support
+- Free (*gratis*)
+- Free (*libre*)
+
+## Overview
+
+- RMarkdown workflow
+- Vectors
+- Data frames
+- Some basic statistical tests
+
+## Vectors
+
+- Often you want to deal with several numbers at once.
+- The `c( )` operator *combines* its contents into a *vector*.
+
+```{r}
+c(2,4,6,2,10)
+c(2,4,6,2,10) + c(10, 20, 30, 40, 50)
+c(2,4,6,2,10) * 1000
+```
+
+## Variables
+
+- Often you want to save a vector so you can reuse it.
+- The assignment operator `<-` saves a variable.
+- Notice that after you execute the following code block, the value of the variable `joe` appears in the Environment tab in the upper-right pane of RStudio.
+
+```{r}
+joe <- c(2,4,6,2,10)
+joe^2
+sum(joe)
+mean(joe)
+```
+
+## Data Frames in R
+
+- The basic form of data. Think spreadsheet.
+- Columns have the same length, but can be different types.
+- One row per observational unit.
+
+## Built-in data sets: `iris`
+
+The following code block loads a built-in data set called `iris` and prints a summary of its columns. When you execute this code block, you should see the name `iris` appear in the Environment tab in the upper-right pane of RStudio. If you click on the name of a data frame in the Environment tab, a spreadsheet view of the data frame will appear in the Source pane. This view is non-editable (which is a good thing).
+
+```{r}
+data("iris")
+summary(iris)
+```
+
+## Columns are vectors
+
+Use the `$` operator to return the columns of a data frame.
+
+```{r}
+iris$Sepal.Length
+```
+
+You can calculate descriptive statistics on each column.
+
+```{r}
+mean(iris$Sepal.Length)
+sd(iris$Petal.Width)
+```
+
+# MA-5 in 5 Minutes
+
+## Basic Statistical Tests in R
+
+- Once the data is loaded, most tests are one line of code.
+- Simple graphs are also one-liners (base graphics).
+
+## MA-5 Topics I cover
+
+- One proportion and one mean
+- Two proportions and two means (independent samples and paired)
+- Multiple proportions ($\chi^2$)
+- Multiple means (ANOVA)
+- Regression and Correlation
+- Multiple linear regression
+- MANOVA, Factorial ANOVA, Logistic Regression (optional)
+- Nonparametric resampling techniques for most of these
+
+# One Sample Tests 
+
+## One-Proportion Test
+
+If Steve gets 54 out of 83 correct on a True/False test, is this evidence that he is doing something other than just guessing randomly? 
+
+```{r}
+prop.test(54, 83, p = 0.5)
+```
+
+## One-Sample $t$-test
+
+I asked my statistics students to report how many hours of sleep they got last night. The data is posted on our website, and the following line will load it and summarize it.
+
+```{r}
+sleep <- read.table("http://math.westmont.edu/ma5/classSleep.txt", header = TRUE)
+summary(sleep)
+```
+
+## One-Sample $t$-test
+
+By default, a one-sample t-test uses a null value of zero and a two-sided alternative.
+
+```{r}
+t.test(sleep)
+```
+
+## $t$-test help menu
+
+Typing a question mark before the name of a command will bring up the help page for the command in the lower-right pane of RStudio.
+
+```{r}
+?t.test
+```
+
+## One-sided $t$-test
+
+In the description of the command in the help page, the equals signs show the default values. You can change these to customize the command.
+
+Does my class sample provide evidence that college students get less than 8 hours of sleep?
+
+```{r}
+t.test(sleep, alternative="less", mu=8)
+```
+
+## Other confidence levels
+
+Based on my sample, what are plausible values of the average number of hours of sleep that college students get, with 99% confidence?
+
+```{r}
+t.test(sleep, conf.level=0.99)
+```
+
+# Explanatory/Response Scenarios 
+
+## Explanatory/Response variables
+
+| Explanatory | Response | Scenario/Test |
+| ---- | ---- | ---- |
+| Categorical (2 levels) | Categorical | two-proportion $z$-test |
+| Categorical (2 levels, independent) | Quantitative | two-sample $t$-test |
+| Categorical (2 levels, paired) | Quantitative | paired $t$-test |
+| Categorical (>2 levels) | Categorical | $\chi^2$ test |
+| Categorical (>2 levels) | Quantitative | ANOVA $F$-test |
+| Quantitative | Quantitative | Regression/Correlation |
+
+## Formulas in R
+
+- Explanatory (x) and response (y) variables are usually denoted using "tilde" notation: `y ~ x`
+- The tilde means "as explained by" or "as a function of".
+- Works in different contexts (tests, plots)
+- Can also have multiple response, explanatory variables (e.g., multiple regression, ANCOVA)
+
+## Two-sample $t$-test
+
+```{r}
+friends <- read.table("http://www.isi-stats.com/isi/data/chap6/CloseFriends.txt", header = TRUE)
+summary(friends)
+```
+
+## Plot using formula
+
+- Explanatory: Sex (Male or Female)
+- Response: How many close friends do you have?
+
+```{r}
+plot(Friends ~ Sex, data = friends)
+```
+
+## Two-sample $t$-test using formula
+
+Do men and women differ on how many close friends they say they have?
+
+```{r}
+t.test(Friends ~ Sex, data = friends)
+```
+
+## Paired $t$-test
+
+Is it faster to take a wide angle or a narrow angle when rounding first base to get to second?
+
+```{r}
+rounding1st <- read.table("http://www.isi-stats.com/isi/data/chap7/FirstBase.txt", header=TRUE)
+summary(rounding1st)
+```
+
+## Paired $t$-test
+
+Is the mean of the differences in times for each runner significantly different from zero?
+
+```{r}
+t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
+```
+
+## Chi-square test
+
+How do real acupuncture, sham acupuncture, and no acupuncture compare? How many patients report that their pain levels improved? 
+
+```{r}
+apunc <- read.table("http://www.isi-stats.com/isi/data/chap8/Acupuncture.txt", header = TRUE)
+table(apunc)
+```
+
+## Plot using formula
+
+- Explanatory: Type of acupuncture
+- Response: Did the patient report improvement?
+
+```{r}
+plot(Improvement ~ Acupunture, data = apunc)
+```
+
+## Chi-square test (table instead of formulas)
+
+Is there some significant difference among the three groups?
+
+```{r}
+chisq.test(table(apunc))
+```
+
+## One-way ANOVA
+
+How do different diets affect change in Body Mass Index (BMI)?
+
+```{r}
+diets <- read.table("http://www.isi-stats.com/isi/data/chap9/Diets.txt", header = TRUE)
+plot(BMI ~ Diet, data = diets)
+```
+
+## One-way ANOVA
+
+Is there an association between the type of diet and the change in BMI?
+
+```{r}
+d.aov <- aov(BMI ~ Diet, data = diets)
+anova(d.aov)
+```
+
+## Tukey HSD follow-up
+
+Where does the association lie, i.e., which pairs of groups are significantly different?
+
+```{r}
+TukeyHSD(d.aov)
+```
+
+## Regression/Correlation
+
+Is there an association between the price of a textbook and the number of pages it has?
+
+```{r}
+textbooks <- read.table("http://www.isi-stats.com/isi/data/chap10/TextbookPrices.txt", header = TRUE)
+plot(Price ~ Pages, data = textbooks)
+```
+
+## Regression/Correlation
+
+```{r}
+bookmodel <- lm(Price ~ Pages, data = textbooks)
+summary(bookmodel)
+```
+
+## Correlation Matrix
+
+```{r}
+cor(textbooks)
+```
+
+## Selecting numeric columns
+
+The first four columns of the `iris` data set were numeric, so if we want a correlation matrix, we have to select just those, and omit the categorical column 5.
+
+```{r}
+cor(iris[,1:4])
+```
+
+## Multiple Regression
+
+```{r}
+cereal <- read.table("http://math.westmont.edu/data/cereal.csv", header=TRUE, sep=";")
+summary(cereal)
+```
+
+## Multiple explanatory variables
+
+Can we predict what the rating will be, given sugar, fiber, calorie, and protein content?
+
+Notice that the formula lists multiple explanatory variables as addition; this indicates the linear model.
+
+```{r}
+cereal.model <- lm(rating ~ sugars + fiber + calories + protein, data = cereal)
+summary(cereal.model)
+```
+
+## Logistic Regression
+
+Does the social status of a driver predict whether the driver will stop for a pedestrian in a crosswalk?
+
+```{r}
+drivers <- read.table("http://math.westmont.edu/ma5/carstatus.txt", header = TRUE)
+plot(Behavior ~ Status, data = drivers)
+```
+
+## Status coded as categorical (factor)
+
+```{r}
+summary(drivers)
+```
+
+## Change status to numeric (quantitative)
+
+```{r}
+drivers$Status <- as.numeric(drivers$Status)
+summary(drivers)
+```
+
+## Logistic Regression in R
+
+Can we predict the probability of yielding if we know the social status of the driver?
+
+```{r}
+d.logit <- glm(Behavior ~ Status, data = drivers, family = binomial)
+summary(d.logit)
+```
+
+## Significance and predictions
+
+- The logistic regression model had a p-value of 0.03, indicating strong evidence of an association between driving behavior and yielding behavior.
+- The prediction equation has the form 
+$$
+\displaystyle \hat{P}(x) = \frac{e^{b_0 + b_1x}}{1 + e^{b_0 + b_1x}}
+$$ 
+where $x$ is a status value and $b_0$ and $b_1$ are the logistic regression coefficients.
+
+## Logistic prediction curve
+
+```{r, fig.height = 4.2, fig.width=6, fig.align='center'}
+b <- coef(d.logit)
+Phat <- function(x) {exp(b[1]+x*b[2])/(1+exp(b[1]+x*b[2]))}
+plot(Phat, xlim = c(0,10), xlab="Status of Driver", ylab="Probability of Yielding")
+```
+
+## Analysis of Covariance
+
+This example is from https://rcompanion.org.
+
+```{r}
+crickets <- read.table("http://math.westmont.edu/data/crickets.txt", header = TRUE)
+plot(Pulse ~ Temp,
+     col = Species,
+     data = crickets,
+     pch = 16)
+```
+
+## ANCOVA
+
+- Response variable: Pulse
+- Explanatory variables: Temp (quantitative) and Species (categorical)
+
+If we want to see interaction effects, we use * instead of + in the formula.
+
+```{r}
+cricket.model1 <- lm(Pulse ~ Temp * Species, data = crickets)
+summary(cricket.model1)
+```
+
+It looks like interaction is not significant, so the slopes for the two species are not significantly different.
+
+## Type II test instead
+
+If you want to do Type II sums of squares instead, you can use the `car` package, which you may need to install. Do this in the lower right pane of RStudio.
+
+```{r}
+library(car)
+Anova(cricket.model1, type = "II")
+```
+
+## Model without interactions
+
+Since the interactions were not significant, we can model without interactions.
+
+```{r}
+cricket.model2 <- lm(Pulse ~ Temp + Species, data = crickets)
+Anova(cricket.model2)
+```
+
+`Species` is significant, so the intercepts are different.
+
+```{r}
+summary(cricket.model2)
+```
+
+The intercepts are -7.21091 and -7.21091-10.06525. The slope is 3.60275 for both lines.
+
+# References
+
+## UCLA Test Chooser
+
+A summary of explanatory/response scenarios, with examples in R (and other languages).
+
+https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
+
+## R Companion
+
+*An R Companion for the Handbook of Biological Statistics*, by Salvatore S. Mangiafico:
+
+https://rcompanion.org/rcompanion/
+
+## These notes
+
+Remember that you can make an HTML version of this document by clicking on the "Knit" icon at the top of the Source pane. You can also knit to other formats.
+
+
+

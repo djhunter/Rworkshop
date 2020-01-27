@@ -1,0 +1,321 @@
+---
+title: "Biology Department introduction to R"
+output:
+  pdf_document:
+    includes:
+      in_header: notesheader.tex
+    keep_tex: yes
+  html_document:
+    df_print: paged
+  revealjs::revealjs_presentation:
+    center: no
+    css: slidesdjh.css
+    fig_height: 7
+    fig_width: 14
+    highlight: zenburn
+    reveal_options:
+      controls: yes
+      height: 600
+      progress: no
+      width: 1080
+    self_contained: yes
+    theme: black
+    transition: slide
+date: "January 28, 2020"
+---
+
+# *Getting Started with R* {data-background="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/724px-R_logo.svg.png" data-background-size="contain"}
+
+## Why R?
+
+- Reproducibility
+- Powerful
+- Very deep community of support
+- Free (*gratis*)
+- Free (*libre*)
+
+## Overview
+
+- RMarkdown workflow
+- Vectors
+- Data frames
+- Some simple statistics
+
+## Vectors
+
+- Often you want to deal with several numbers at once.
+- The `c( )` operator *combines* its contents into a *vector*.
+
+```{r}
+c(2,4,6,2,10)
+c(2,4,6,2,10) + c(10, 20, 30, 40, 50)
+c(2,4,6,2,10) * 1000
+```
+
+## Variables
+
+- Often you want to save a vector so you can reuse it.
+- The assignment operator `<-` saves a variable.
+
+```{r}
+joe <- c(2,4,6,2,10)
+joe^2
+sum(joe)
+mean(joe)
+```
+
+## Data Frames in R
+
+- The basic form of data. Think spreadsheet.
+- Columns have the same length, but can be different types.
+- One row per observational unit.
+
+## Built-in data sets: `iris`
+
+```{r}
+data("iris")
+summary(iris)
+```
+
+## Columns are vectors
+
+Use the `$` operator to return the columns of a data frame.
+
+```{r}
+iris$Sepal.Length
+```
+
+# *MA-5 in 5 Minutes* {data-background="http://pfeifferpartners.com/wp-content/uploads/2016/03/pfeiffer-westmont-int-winter-main-lobby-stair-M.jpg" data-background-size="contain"}
+
+## Basic Statistical Tests in R
+
+>- Once the data is loaded, most tests are one line of code.
+>- Simple graphs are also one-liners (base graphics).
+
+## MA-5 Topics I cover
+
+- One proportion and one mean
+- Two proportions and two means (independent samples and paired)
+- Multiple proportions ($\chi^2$)
+- Multiple means (ANOVA)
+- Regression and Correlation
+- Multiple linear regression
+- MANOVA, Factorial ANOVA, Logistic Regression (optional)
+
+>- *Nonparametric Resampling Techniques for all of the above*
+
+# *One Sample Tests* {data-background="https://cdn.cnn.com/cnnnext/dam/assets/151119194429-04-cancer-dogs-super-169.jpg" data-background-size="contain"}
+
+## One-Proportion Test
+
+$$
+H_0: \pi = 0.5 \\ 
+H_a: \pi \neq 0.5 \\ 
+\hat{p} = 54/83, \quad n=83
+$$
+
+```{r, eval=FALSE}
+prop.test(54, 83, p = 0.5)
+```
+
+## One-Proportion Test
+
+```{r}
+prop.test(54, 83, p = 0.5)
+```
+
+
+## One-Sample $t$-test
+
+```{r}
+sleep <- read.table("http://math.westmont.edu/ma5/classSleep.txt", header = TRUE)
+summary(sleep)
+```
+
+## One-Sample $t$-test
+
+$$
+H_0: \mu = 0 \\
+H_a: \mu \neq 0
+$$
+
+```{r, eval=FALSE}
+t.test(sleep)
+```
+
+## One-Sample $t$-test
+
+```{r}
+t.test(sleep)
+```
+
+## $t$-test help menu
+
+```{r, eval=FALSE}
+?t.test
+```
+
+```
+Student's t-Test
+Description:
+     Performs one and two sample t-tests on vectors of data.
+Usage:
+     t.test(x, ...)
+     
+     ## Default S3 method:
+     t.test(x, y = NULL,
+            alternative = c("two.sided", "less", "greater"),
+            mu = 0, paired = FALSE, var.equal = FALSE,
+            conf.level = 0.95, ...)
+```
+
+## One-sided $t$-test
+
+```{r}
+t.test(sleep, alternative="less", mu=8)
+```
+
+# *Explanatory/Response Scenarios* {data-background="https://pages.wustl.edu/files/pages/olsen/site/slideshow/img3260.jpg" data-background-size="contain"}
+
+## Explanatory/Response variables
+
+| Explanatory | Response | Scenario/Test |
+| ---- | ---- | ---- |
+| Categorical (2 levels) | Categorical | two-proportion $z$-test |
+| Categorical (2 levels, independent) | Quantitative | two-sample $t$-test |
+| Categorical (2 levels, paired) | Quantitative | paired $t$-test |
+| Categorical (>2 levels) | Categorical | $\chi^2$ test |
+| Categorical (>2 levels) | Quantitative | ANOVA $F$-test |
+| Quantitative | Quantitative | Regression/Correlation |
+
+## Formulas in R
+
+- Explanatory (x) and response (y) variables are usually denoted using "tilde" notation: `y ~ x`
+- Works in different contexts (tests, plots)
+- Can also have multiple response, explanatory variables
+
+## Two-sample $t$-test
+
+```{r}
+friends <- read.table("http://www.isi-stats.com/isi/data/chap6/CloseFriends.txt", header = TRUE)
+summary(friends)
+```
+
+## Two-sample $t$-test
+
+```{r, fig.align='center', fig.height=4, fig.width=4}
+plot(Friends ~ Sex, data = friends)
+```
+
+## Two-sample $t$-test
+
+$$
+H_0: \mu_1 - \mu_2 = 0 \\
+H_a: \mu_1 - \mu_2 \neq 0 
+$$
+
+```{r, eval=FALSE}
+t.test(Friends ~ Sex, data = friends)
+```
+
+## Two-sample $t$-test
+
+```{r}
+t.test(Friends ~ Sex, data = friends)
+```
+
+## Paired $t$-test
+
+```{r}
+rounding1st <- read.table("http://www.isi-stats.com/isi/data/chap7/FirstBase.txt", header=TRUE)
+summary(rounding1st)
+```
+
+## Paired $t$-test
+
+$$
+H_0: \mu_d  = 0 \\
+H_a: \mu_d  \neq 0 
+$$
+
+```{r, eval = FALSE}
+t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
+```
+
+## Paired $t$-test
+
+```{r}
+t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
+```
+
+## Chi-square test
+
+```{r}
+apunc <- read.table("http://www.isi-stats.com/isi/data/chap8/Acupuncture.txt", header = TRUE)
+table(apunc)
+head(apunc)
+```
+
+## Chi-square test
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+plot(Improvement ~ Acupunture, data = apunc)
+```
+
+## Chi-square test
+
+```{r}
+chisq.test(table(apunc))
+```
+
+## One-way ANOVA
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+diets <- read.table("http://www.isi-stats.com/isi/data/chap9/Diets.txt", header = TRUE)
+plot(BMI ~ Diet, data = diets)
+```
+
+## One-way ANOVA
+
+```{r}
+d.aov <- aov(BMI ~ Diet, data = diets)
+anova(d.aov)
+```
+
+## Tukey HSD follow-up
+
+```{r}
+TukeyHSD(d.aov)
+```
+
+## Regression/Corellation
+
+```{r, fig.align='center', fig.height=4, fig.width=5}
+textbooks <- read.table("http://www.isi-stats.com/isi/data/chap10/TextbookPrices.txt", header = TRUE)
+plot(Price ~ Pages, data = textbooks)
+```
+
+## Regression/Corellation
+
+```{r}
+summary(lm(Price ~ Pages, data = textbooks))
+```
+
+## Correlation Matrix
+
+```{r}
+cor(textbooks)
+```
+
+## Multiple Regression
+
+## Logistic Regression
+
+## Analysis of Covariance
+
+# *Other scenarios* {data-background="https://imgs.xkcd.com/comics/correlation.png" data-background-size="contain"}
+
+## UCLA Test Chooser
+
+https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
+
