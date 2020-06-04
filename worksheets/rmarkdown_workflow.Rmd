@@ -1,0 +1,90 @@
+# Using R Markdown Documents
+
+## Rmd files
+
+This is a simple R Markdown file to illustrate a reproducible workflow in R. The instructions below assume that you have managed to open this file in RStudio. Read through the document, and experiment with the tasks given in **bold**.
+
+The R Markdown code appears in the upper-left pane of RStudio; this is the *Source pane*. An R Markdown file has the extension `.Rmd`, and is just a plain text file with some special commands that RStudio can interpret. Notice that the source pane has a toolbar at the top with several icons (e.g., there are icons for Save, Check Spelling, and Find/Replace). 
+
+## Knitting
+
+When you are working on an R Markdown document, you can *Knit* the file to a format that is easier to read and share. The Knit icon in the toolbar will convert your file to HTML output by default. (You can knit to other formats as well, but HTML is fast and convenient.) **Try knitting this document.** The first time you do so, RStudio will probably ask you to install some packages. Go ahead and let RStudio install these for you.
+
+Notice that the knitted HTML output has formatting for text (headings, italics, etc) as well as for code. By default this will display in a viewing window, but you can **click the Pop-out icon** to display it in a web browser. If you would rather the HTML output appear in the lower-right *Viewer pane*, you can change the settings in Tools > Global Options > R Markdown.
+
+In addition to formatting all the text you type, knitting will also run all the commands that you put in *code chunks*.
+
+## Code Chunks
+
+The lines below (between the triple grave accents) form a *code chunk*. Each line is a separate arithmetic calculation. You can execute the code chunk by clicking on the Play button in the upper-right corner of the chunk. **Try executing the following code chunk** to do the calculations. You should see output appear below the chunk. **Change one of the arithmetic expressions and execute the code chunk again again.**
+
+```{r}
+2*4 + 100
+sqrt(2)
+pi/2
+```
+
+You can insert an R code chunk using the *Insert* icon in the toolbar. **Insert a new code chunk on the next line, and use it to perform another arithmetic problem.**
+
+
+
+## The Console
+
+You may have noticed that when you execute a code chunk, the input and output appear in the lower-left *Console pane*. You can also type commands directly in the console pane, but then they won't be saved in your document. **Try an arithmetic problem in the Console pane.** (Hit return to execute the command.)
+
+## Variables and the Environment
+
+Often we would like to save the result of a calculation, so we can refer to it in subsequent commands. The assignment operator `<-` will store the result of a calculation in a variable. Variable names can be almost anything, but you can't use spaces, and you should generally avoid special characters. The following code chunk assigns the result of an arithmetic problem to a variable called `myAnswer`.
+
+```{r}
+myAnswer <- 54/6
+```
+
+**Execute the above code chunk.** Notice that the *Environment tab* in the upper-right now contains a variable named `myAnswer` and shows its value. Now try **inserting a code chunk and defining a new variable.** Make up your own variable name and arithmetic problem. **Execute your code chunk** and check that the value appears in the Environment tab.
+
+## Data Frames
+
+A *data frame* in R is the basic way to store data. A data frame is like a spreadsheet; each column can be a different data type, but all the columns have to have the same size. **Execute the following code block** to read some data off the internet and store it in a local variable.
+
+```{r}
+crickets <- read.csv("http://math.westmont.edu/data/crickets.csv")
+```
+
+Notice that there is now a variable called `crickets` in the environment pane. You can **click on the name `crickets` in the Environment tab** to view the data in a new tab. (You can't edit the data.) This data frame has three variables: `Species`, `Temp`, and `Pulse`. The first variable is categorical and the other two are quantitative.
+
+## Simple statistics
+
+**Execute the following code chunk** to perform a `t.test`.
+
+```{r}
+t.test(Temp ~ Species, data=crickets)
+```
+
+**Execute the following code chunk** to do linear regression.
+
+```{r}
+cModel <- lm(Pulse ~ Temp, data = crickets)
+summary(cModel)
+```
+
+Code for other common statistical tests can be found here:
+https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
+
+## Basic plots
+
+R is capable of much nicer graphics, but here's a basic plot. **Execute it** to see the plot.
+
+```{r}
+plot(Pulse ~ Temp, data = crickets)
+```
+
+## Knit and share
+
+It is often convenient to share results over email. Here's one way:
+
+1. Knit (to HTML).
+2. Open the HTML file in a web browser (for Gmail, Chrome works best).
+3. Select the output in the web browser and copy it.
+4. Paste into the body of an email.
+
+**Knit** this file one last time and **try emailing yourself the output.**
