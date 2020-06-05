@@ -20,6 +20,10 @@ When downloading these worksheets, it may be necessary to right-click (or two-fi
 
 # Getting Started
 
+## [rmarkdown_workflow.Rmd](rmarkdown_workflow.Rmd)
+
+For a self-guided tour of the RStudio interface, open this file in RStudio and read through it, doing the tasks indicated in **bold**.
+
 ## [simple.Rmd](simple.Rmd) 
 
 This barebones RMarkdown template illustrates how to *Knit* and use code blocks. 

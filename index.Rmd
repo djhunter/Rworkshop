@@ -45,6 +45,10 @@ Streamline your projects by writing your own functions, and apply them over a ra
 
 This page contains an index of the RMarkdown worksheets that go with the slides.
 
+## Data files
+
+- [crickets.csv](data/crickets.csv)
+
 ## Workshop Prerequisites
 
 * Bring a laptop that uses OSX, Windows, or Linux. (If you would like to use a Chromebook, let me know and I will give you an account on our statistics server.)
