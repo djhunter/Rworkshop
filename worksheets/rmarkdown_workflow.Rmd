@@ -6,17 +6,9 @@ This is a simple R Markdown file to illustrate a reproducible workflow in R. The
 
 The R Markdown code appears in the upper-left pane of RStudio; this is the *Source pane*. An R Markdown file has the extension `.Rmd`, and is just a plain text file with some special commands that RStudio can interpret. Notice that the source pane has a toolbar at the top with several icons (e.g., there are icons for Save, Check Spelling, and Find/Replace). 
 
-## Knitting
-
-When you are working on an R Markdown document, you can *Knit* the file to a format that is easier to read and share. The Knit icon in the toolbar will convert your file to HTML output by default. (You can knit to other formats as well, but HTML is fast and convenient.) **Try knitting this document.** The first time you do so, RStudio will probably ask you to install some packages. Go ahead and let RStudio install these for you.
-
-Notice that the knitted HTML output has formatting for text (headings, italics, etc) as well as for code. By default this will display in a viewing window, but you can **click the Pop-out icon** to display it in a web browser. If you would rather the HTML output appear in the lower-right *Viewer pane*, you can change the settings in Tools > Global Options > R Markdown.
-
-In addition to formatting all the text you type, knitting will also run all the commands that you put in *code chunks*.
-
 ## Code Chunks
 
-The lines below (between the triple grave accents) form a *code chunk*. Each line is a separate arithmetic calculation. You can execute the code chunk by clicking on the Play button in the upper-right corner of the chunk. **Try executing the following code chunk** to do the calculations. You should see output appear below the chunk. **Change one of the arithmetic expressions and execute the code chunk again again.**
+The lines below (between the triple grave accents) form a *code chunk*. Each line is a separate arithmetic calculation. You can execute the code chunk by clicking on the Play button in the upper-right corner of the chunk. **Try executing the following code chunk** to do the calculations. You should see output appear below the chunk. **Change one of the arithmetic expressions and execute the code chunk again.**
 
 ```{r}
 2*4 + 100
@@ -77,6 +69,14 @@ R is capable of much nicer graphics, but here's a basic plot. **Execute it** to 
 ```{r}
 plot(Pulse ~ Temp, data = crickets)
 ```
+
+## Knitting
+
+When you are working on an R Markdown document, you can *Knit* the file to a format that is easier to read and share. The Knit icon in the toolbar will convert your file to HTML output by default. (You can knit to other formats as well, but HTML is fast and convenient.) **Try knitting this document.** The first time you do so, RStudio will probably ask you to install some packages. Go ahead and let RStudio install these for you.
+
+Notice that the knitted HTML output has formatting for text (headings, italics, etc) as well as for code. By default this will display in a viewing window, but you can **click the Pop-out icon** to display it in a web browser. If you would rather the HTML output appear in the lower-right *Viewer pane*, you can change the settings in Tools > Global Options > R Markdown.
+
+In addition to formatting all the text you type, knitting will also run all the commands that you put in code chunks.
 
 ## Knit and share
 
