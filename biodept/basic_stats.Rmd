@@ -171,7 +171,9 @@ t.test(sleep, conf.level=0.99)
 ## Two-sample $t$-test
 
 ```{r}
-friends <- read.table("http://www.isi-stats.com/isi/data/chap6/CloseFriends.txt", header = TRUE)
+friends <- read.table("http://www.isi-stats.com/isi/data/chap6/CloseFriends.txt", 
+                      header = TRUE,
+                      stringsAsFactors = TRUE)
 summary(friends)
 ```
 
@@ -214,7 +216,9 @@ t.test(rounding1st$narrow, rounding1st$wide, paired = TRUE)
 How do real acupuncture, sham acupuncture, and no acupuncture compare? How many patients report that their pain levels improved? 
 
 ```{r}
-apunc <- read.table("http://www.isi-stats.com/isi/data/chap8/Acupuncture.txt", header = TRUE)
+apunc <- read.table("http://www.isi-stats.com/isi/data/chap8/Acupuncture.txt", 
+                    header = TRUE,
+                    stringsAsFactors = TRUE)
 table(apunc)
 ```
 
@@ -240,7 +244,9 @@ chisq.test(table(apunc))
 How do different diets affect change in Body Mass Index (BMI)?
 
 ```{r}
-diets <- read.table("http://www.isi-stats.com/isi/data/chap9/Diets.txt", header = TRUE)
+diets <- read.table("http://www.isi-stats.com/isi/data/chap9/Diets.txt", 
+                    header = TRUE,
+                    stringsAsFactors = TRUE)
 plot(BMI ~ Diet, data = diets)
 ```
 
@@ -294,7 +300,10 @@ cor(iris[,1:4])
 ## Multiple Regression
 
 ```{r}
-cereal <- read.table("http://math.westmont.edu/data/cereal.csv", header=TRUE, sep=";")
+cereal <- read.table("http://math.westmont.edu/data/cereal.csv", 
+                     header=TRUE, 
+                     stringsAsFactors = TRUE,
+                     sep=";")
 summary(cereal)
 ```
 
@@ -314,7 +323,9 @@ summary(cereal.model)
 Does the social status of a driver predict whether the driver will stop for a pedestrian in a crosswalk?
 
 ```{r}
-drivers <- read.table("http://math.westmont.edu/ma5/carstatus.txt", header = TRUE)
+drivers <- read.table("http://math.westmont.edu/ma5/carstatus.txt", 
+                      header = TRUE,
+                      stringsAsFactors = TRUE)
 plot(Behavior ~ Status, data = drivers)
 ```
 
@@ -362,7 +373,9 @@ plot(Phat, xlim = c(0,10), xlab="Status of Driver", ylab="Probability of Yieldin
 This example is from https://rcompanion.org.
 
 ```{r}
-crickets <- read.table("http://math.westmont.edu/data/crickets.txt", header = TRUE)
+crickets <- read.table("http://math.westmont.edu/data/crickets.txt", 
+                       header = TRUE,
+                       stringsAsFactors = TRUE)
 plot(Pulse ~ Temp,
      col = Species,
      data = crickets,

@@ -39,7 +39,8 @@ myAnswer <- 54/6
 A *data frame* in R is the basic way to store data. A data frame is like a spreadsheet; each column can be a different data type, but all the columns have to have the same size. **Execute the following code block** to read some data off the internet and store it in a local variable.
 
 ```{r}
-crickets <- read.csv("https://djhunter.github.io/Rworkshop/data/crickets.csv")
+crickets <- read.csv("https://djhunter.github.io/Rworkshop/data/crickets.csv", 
+                     stringsAsFactors = TRUE)
 ```
 
 Notice that there is now a variable called `crickets` in the environment pane. You can **click on the name `crickets` in the Environment tab** to view the data in a new tab. (You can't edit the data.) This data frame has three variables: `Species`, `Temp`, and `Pulse`. The first variable is categorical and the other two are quantitative.

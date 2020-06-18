@@ -51,6 +51,10 @@ Insert some simple commands and email yourself a report.
 
 # Introductory Statistics
 
+## [basic_stats.Rmd](../biodept/basic_stats.Rmd) 
+
+Illustrates several different basic statistical tests (biology-centric).
+
 # Dealing with Data
 
 # Graphics

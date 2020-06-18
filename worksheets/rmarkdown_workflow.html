@@ -396,7 +396,8 @@ summary {
 <div id="data-frames" class="section level2">
 <h2>Data Frames</h2>
 <p>A <em>data frame</em> in R is the basic way to store data. A data frame is like a spreadsheet; each column can be a different data type, but all the columns have to have the same size. <strong>Execute the following code block</strong> to read some data off the internet and store it in a local variable.</p>
-<pre class="r"><code>crickets &lt;- read.csv(&quot;https://djhunter.github.io/Rworkshop/data/crickets.csv&quot;)</code></pre>
+<pre class="r"><code>crickets &lt;- read.csv(&quot;https://djhunter.github.io/Rworkshop/data/crickets.csv&quot;, 
+                     stringsAsFactors = TRUE)</code></pre>
 <p>Notice that there is now a variable called <code>crickets</code> in the environment pane. You can <strong>click on the name <code>crickets</code> in the Environment tab</strong> to view the data in a new tab. (You can’t edit the data.) This data frame has three variables: <code>Species</code>, <code>Temp</code>, and <code>Pulse</code>. The first variable is categorical and the other two are quantitative.</p>
 </div>
 <div id="simple-statistics" class="section level2">
