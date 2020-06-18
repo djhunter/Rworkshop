@@ -16,6 +16,23 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r, echo=FALSE}
+library(metathis)
+meta() %>%
+  meta_description(
+    "A collection of self-guided RMarkdown activities to get started using R and RStudio."
+  ) %>%
+  meta_name("github-repo" = "djhunter/Rworkshop") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "RMarkdown Worksheets",
+    url = "https://djhunter.github.io/Rworkshop/worksheets/index.html",
+    image = "https://d33wubrfki0l68.cloudfront.net/521a038ed009b97bf73eb0a653b1cb7e66645231/8e3fd/assets/img/rstudio-icon.png",
+    image_alt = "RStudio Logo",
+    og_author = c("David J. Hunter")
+  )
+```
+
 When downloading these worksheets, it may be necessary to right-click (or two-finger-click) and choose *Save Link As...*.
 
 # Getting Started
